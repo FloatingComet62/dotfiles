@@ -1,5 +1,3 @@
-echo $1
-
 if [[ "$1" == "load_in" ]]
 then
   echo "load_in"
