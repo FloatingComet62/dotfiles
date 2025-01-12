@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = master
+[user]
+	name = FloatingComet62
+	email = shubh2007rai@gmail.com
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	sshcommand=ssh -i ~/.ssh/id_ed25519
