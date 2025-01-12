@@ -11,9 +11,8 @@ if [[ "$1" == "load_out" ]] then
 fi
 if [[ "$1" == "update" ]] then
   echo "update"
-  message = "update"
-  message += date +%Y/%m/%d-%H:%M:%S
+  message="$(date +%Y/%m/%d-%H:%M:%S)"
   git add .
-  git commit -m message
+  git commit -m "update $message"
   git push origin master
 fi
