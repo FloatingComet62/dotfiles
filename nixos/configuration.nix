@@ -96,7 +96,6 @@ in {
     description = "aargh";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
       kate
     ];
   };
@@ -112,25 +111,18 @@ in {
     neofetch
     unstable.neovim
     nmap
-    rustup
     htop
     ffmpeg
-    python3
-    python3.pkgs.virtualenv
-    gcc
-    gnumake
     cmake
     rclone
-    libsForQt5.spectacle
-    p7zip
-    nix-index
     neovide
-    nodejs # needed for github copilot (FUCK)
-    fasm
+    kitty # required for the default Hyprland config
   ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   time.hardwareClockInLocalTime = true;  
-  programs.zsh.enable = true;
+  programs.hyprland.enable = true;
+  programs.fish.enable = true;
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
