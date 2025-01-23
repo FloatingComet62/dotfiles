@@ -6,6 +6,7 @@ then
   sudo cp ~/.config/fish/* ~/dotfiles/fish/ -r
   sudo cp ~/.gitconfig ~/dotfiles/home
   sudo cp ~/shell.nix ~/dotfiles/home
+  sudo cp ~/setup.nix ~/dotfiles/home
 elif [[ "$1" == "load_out" ]]
 then
   echo "load_out"

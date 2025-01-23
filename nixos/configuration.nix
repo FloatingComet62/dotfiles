@@ -62,6 +62,10 @@ in {
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+  networking.firewall = {
+    allowedTCPPorts = [53317];
+    allowedUDPPorts = [53317];
+  };
 
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_IN";
@@ -111,7 +115,7 @@ in {
     neofetch
     unstable.neovim
     nmap
-    htop
+    btop
     ffmpeg
     cmake
     rclone

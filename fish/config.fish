@@ -6,3 +6,4 @@ set -U fish_greeting
 
 alias ls 'ls --color=auto'
 alias neovide 'neovide --fork'
+alias btop 'btop --utf-force'

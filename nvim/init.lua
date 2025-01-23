@@ -1,48 +1,25 @@
--- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
--- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
-local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
-    lazypath })
-end
-vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
+vim.opt.number = true
+vim.opt.wrap = false
 
--- validate that lazy is available
-if not pcall(require, "lazy") then
-  -- stylua: ignore
-  vim.api.nvim_echo(
-  { { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } },
-    true, {})
-  vim.fn.getchar()
-  vim.cmd.quit()
-end
+-- Split open explorer
+vim.keymap.set('n', '<leader><A-e>', ':Ex<CR>', { noremap = true, silent = true }) -- Replace Current
+vim.keymap.set('n', '<leader><S-e>', ':Sex<CR>', { noremap = true, silent = true }) -- Horizontal
+vim.keymap.set('n', '<leader>e', ':Vex<CR>', { noremap = true, silent = true })     -- Vertical
 
-require "lazy_setup"
-require "polish"
+-- Vertical resize
+vim.keymap.set('n', '<A-Left>', ':vertical resize -1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-Right>', ':vertical resize +1<CR>', { noremap = true, silent = true })
 
-if vim.g.neovide == true then
-  vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
-  vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
-end
+-- Horizontal resize
+vim.keymap.set('n', '<A-Up>', ':resize +1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-Down>', ':resize -1<CR>', { noremap = true, silent = true })
 
-if vim.g.neovide == true then
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-+>",
-    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
-    { silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-->",
-    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
-    { silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-0>",
-    ":lua vim.g.neovide_scale_factor = 1<CR>",
-    { silent = true }
-  )
-end
+-- Buffer
+vim.keymap.set('n', '<leader>c', ':bd<CR>', { noremap = true, silent = true })   -- Close Buffer
+vim.keymap.set('n', '<leader>C', ':bd!<CR>', { noremap = true, silent = true })  -- Force Close Buffer
+vim.keymap.set('n', '<leader>h', ':hide<CR>', { noremap = true, silent = true }) -- Hide Buffer
+
+-- Switch buffer
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', { noremap = true, silent = true })     -- Next Buffer
+vim.keymap.set('n', '<leader>p', ':bprevious<CR>', { noremap = true, silent = true }) -- Previous Buffer
