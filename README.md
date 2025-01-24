@@ -6,4 +6,4 @@
 - Grub Menu with HP theme
 - Hyprland
 - Simple oh-my-zsh
-- Astrovim setup with rust analyzer & github copilot
+- Minimal nvim setup

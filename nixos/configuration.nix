@@ -121,6 +121,7 @@ in {
     rclone
     neovide
     kitty # required for the default Hyprland config
+    hyprpaper
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
