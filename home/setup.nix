@@ -2,7 +2,6 @@
 pkgs.mkShell {
   # List of packages to include
   buildInputs = with pkgs; [
-    nodejs
     libsForQt5.spectacle
     p7zip
     nix-index

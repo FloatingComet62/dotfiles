@@ -117,9 +117,7 @@ in {
     nmap
     btop
     ffmpeg
-    cmake
     rclone
-    neovide
     kitty # required for the default Hyprland config
     hyprpaper
   ];
