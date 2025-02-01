@@ -81,9 +81,11 @@ in {
     LC_TIME = "en_IN";
   };
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   services.printing.enable = true;
   hardware.pulseaudio.enable = false;
@@ -120,6 +122,7 @@ in {
     rclone
     kitty # required for the default Hyprland config
     hyprpaper
+    kdePackages.sddm-kcm
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
