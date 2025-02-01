@@ -2,7 +2,7 @@
 <h2 align="center">Under construction</h2>
 
 # Features
-- Gruvbox theme all the way!
+- Graphite Theme + F1 Wallpapers
 - Grub Menu with HP theme
 - Hyprland
 - Simple oh-my-zsh
