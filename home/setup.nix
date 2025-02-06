@@ -11,6 +11,7 @@ pkgs.mkShell {
     gnumake
     gcc
     rustup
+    nodejs
   ];
 
   # Use fish as the default shell
