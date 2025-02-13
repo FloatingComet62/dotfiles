@@ -118,6 +118,7 @@ in {
     unstable.neovim
     nmap
     btop
+    dust
     ffmpeg
     rclone
     kitty # required for the default Hyprland config
