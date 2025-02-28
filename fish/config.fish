@@ -9,6 +9,11 @@ function git_url_convert
     echo "git@github.com:$username/$reponame.git"
 end
 
+function connect_phone
+    adb forward tcp:2222 tcp:2222
+    ssh localhost -p 2222
+end
+
 set -U fish_greeting
 
 alias ls 'ls --color=auto'

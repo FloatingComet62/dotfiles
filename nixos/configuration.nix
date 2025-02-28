@@ -124,6 +124,8 @@ in {
     kitty # required for the default Hyprland config
     hyprpaper
     kdePackages.sddm-kcm
+    vscode
+    android-tools
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
