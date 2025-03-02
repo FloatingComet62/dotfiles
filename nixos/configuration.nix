@@ -2,6 +2,7 @@
 # nix-ld https://github.com/Mic92/nix-ld/archive/main.tar.gz
 # nixos https://channels.nixos.org/nixos-24.11
 # nixos-unstable https://nixos.org/channels/nixos-unstable
+# home-manager https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz
 
 { config, pkgs, ... }:
 let
@@ -13,6 +14,7 @@ let
 in {
   imports = [
       ./hardware-configuration.nix
+      <home-manager/nixos>
   ];
   boot.loader = {
     grub = {
@@ -114,10 +116,8 @@ in {
     vim
     wget
     git
-    neofetch
     unstable.neovim
     nmap
-    btop
     dust
     ffmpeg
     rclone
@@ -130,7 +130,6 @@ in {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   time.hardwareClockInLocalTime = true;  
-  programs.hyprland.enable = true;
   programs.fish.enable = true;
   programs.nix-ld = {
     enable = true;
@@ -139,6 +138,7 @@ in {
       zlib
     ];
   };
+  # services.seatd.enable = true;
   services.openssh.enable = true;
   services.flatpak.enable = true;
   system.stateVersion = "24.11";

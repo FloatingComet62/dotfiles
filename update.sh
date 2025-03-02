@@ -4,16 +4,14 @@ then
   sudo cp /etc/nixos/* ~/dotfiles/nixos/ -r
   sudo cp ~/.config/nvim/* ~/dotfiles/nvim/ -r
   sudo cp ~/.config/fish/* ~/dotfiles/fish/ -r
-  sudo cp ~/.gitconfig ~/dotfiles/home
-  sudo cp ~/shell.nix ~/dotfiles/home
-  sudo cp ~/setup.nix ~/dotfiles/home
+  sudo cp ~/.config/home-manager/* ~/dotfiles/home_manager/ -r
 elif [[ "$1" == "load_out" ]]
 then
   echo "load_out"
   sudo cp ~/dotfiles/nixos/* /etc/nixos/ -r
   sudo cp ~/dotfiles/nvim/* ~/.config/nvim/ -r
   sudo cp ~/dotfiles/fish/* ~/.config/fish/ -r
-  sudo cp ~/dotfiles/home/* ~/
+  sudo cp ~/dotfiles/home_manager/* ~/.config/home-manager/ -r
 elif [[ "$1" == "git" ]]
 then
   echo "git"

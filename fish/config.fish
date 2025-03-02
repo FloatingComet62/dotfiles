@@ -11,12 +11,13 @@ end
 
 function connect_phone
     adb forward tcp:2222 tcp:2222
-    ssh localhost -p 2222
+    ssh root@localhost -p 2222
 end
 
 set -U fish_greeting
 
-alias ls 'ls --color=auto'
+alias ls 'exa'
+alias cat 'bat'
 alias neovide 'neovide --fork'
 alias btop 'btop --utf-force'
 alias fix_git_url 'git config set remote.origin.url (git_url_convert (git config --get remote.origin.url))'
