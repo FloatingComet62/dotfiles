@@ -3,6 +3,7 @@
     # ./hyprland.nix
     # ./waybar.nix
     ./wlogout.nix
+    ./kitty.nix
   ];
   home.username = "aargh";
   home.homeDirectory = "/home/aargh";
