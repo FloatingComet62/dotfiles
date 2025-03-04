@@ -122,6 +122,12 @@ in{
         extraConfig = ''
 shell_integration     no-title
 shell                 fish
+
+font_family JetBrains Mono
+bold_font JetBrains Mono Bold
+italic_font JetBrains Mono Italic
+bold_italic_font JetBrains Mono Bold Italic
+font_size 12.0
 '' + comet;
     };
 }
