@@ -8,5 +8,7 @@
     starship
     tmux
     cmake
+    nodejs_20
+    unzip
   ];
 }
