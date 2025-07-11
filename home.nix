@@ -13,6 +13,12 @@
     home.stateVersion = "25.05";
   };
   home-manager.backupFileExtension = "hm-backup";
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 10d";
+  };
+
 
   environment.systemPackages = with pkgs; [
     fastfetch
