@@ -12,8 +12,7 @@
       menuentry "Windows" {
         insmod part_gpt
         insmod fat
-        insmod search_fs_uuid
-        insmod chain
+        set root=(hd0,gpt1)
         chainloader /EFI/Microsoft/Boot/bootmgfw.efi
       }
       menuentry "Reboot" {

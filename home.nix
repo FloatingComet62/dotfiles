@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
-let unstable = import <nixos-unstable> { config.allowUnfree = true; };
-in {
+{
   users.users.aargh = {
     isNormalUser = true;
     description = "Aargh";
@@ -23,7 +22,6 @@ in {
     nmap
     dust
     gnome-tweaks
-    unstable.neovim
     home-manager
   ];
 }

@@ -8,6 +8,7 @@
       ./nvidia.nix
       ./home.nix
       ./environment.nix
+      ./nvim.nix
       ./apps.nix
       <home-manager/nixos>
     ];
