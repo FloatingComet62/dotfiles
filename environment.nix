@@ -8,4 +8,6 @@
     tmux
     cmake
   ];
+
+  programs.mosh.enable = true;
 }
