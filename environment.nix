@@ -7,6 +7,7 @@
     starship
     tmux
     cmake
+    git-lfs
   ];
 
   programs.mosh.enable = true;
