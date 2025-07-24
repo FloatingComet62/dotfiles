@@ -8,7 +8,11 @@
     tmux
     cmake
     git-lfs
+    beamMinimal27Packages.elixir
+    beamMinimal27Packages.erlang
+    # (with beamMinimal27Packages; [
+    #   elixir
+    #   erlang
+    # ])
   ];
-
-  programs.mosh.enable = true;
 }
