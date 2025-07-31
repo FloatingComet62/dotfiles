@@ -8,6 +8,7 @@
     bitwarden
     jetbrains.pycharm-professional
     jetbrains.clion
+    wineWowPackages.stable
   ];
 
   # for Localsend

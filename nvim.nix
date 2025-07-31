@@ -4,18 +4,22 @@ in {
   environment.systemPackages = with pkgs; [
     unstable.neovim
 
-    ripgrep
     gcc
     cargo
     python311
     nodejs_20
-    unzip
     lua
     lua53Packages.luarocks
     lua53Packages.luafilesystem
+    beamMinimal27Packages.elixir
+    beamMinimal27Packages.erlang
+
+    unzip
     xsel
+    ripgrep
     tree-sitter
 
+    clang-tools
     lua-language-server
     vscode-langservers-extracted
     rust-analyzer
@@ -33,5 +37,7 @@ in {
       black
       isort
     ]))
+    beamMinimal27Packages.elixir-ls
+    beamMinimal27Packages.erlang-ls
   ];
 }
