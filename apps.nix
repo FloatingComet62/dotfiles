@@ -6,6 +6,7 @@
     discord
     localsend
     bitwarden
+    obsidian
     jetbrains.pycharm-professional
     jetbrains.clion
     wineWowPackages.stable

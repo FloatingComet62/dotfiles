@@ -4,11 +4,13 @@ in {
   environment.systemPackages = with pkgs; [
     unstable.neovim
 
+    go
     gcc
     cargo
     python311
     nodejs_20
     lua
+    zig
     lua53Packages.luarocks
     lua53Packages.luafilesystem
     beamMinimal27Packages.elixir
@@ -19,6 +21,7 @@ in {
     ripgrep
     tree-sitter
 
+    gopls
     clang-tools
     lua-language-server
     vscode-langservers-extracted
