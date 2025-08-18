@@ -5,7 +5,6 @@
     python311
     zoxide
     starship
-    tmux
     cmake
     git-lfs
     inetutils

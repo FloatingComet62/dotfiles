@@ -10,6 +10,7 @@
       ./environment.nix
       ./nvim.nix
       ./apps.nix
+      ./tmux.nix
       <home-manager/nixos>
     ];
 
