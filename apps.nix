@@ -14,6 +14,7 @@
     libreoffice-qt6-fresh
 
     kdePackages.dolphin
+    yazi
     # kio-extras
     # ffmpegthumbs
     # kdePackages.kdegraphics-thumbnailers

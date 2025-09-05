@@ -8,7 +8,7 @@ in {
     nvidiaSettings = true;
     open = true;
   };
-  boot.kernelParams = [ "acpi_backlight=vendor" ];
+  boot.kernelParams = [ "acpi_backlight=video" ];
   boot.initrd.kernelModules = [ "nvidia" "hp_wmi" ];
   services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.cudaSupport = true;

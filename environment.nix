@@ -9,6 +9,8 @@
     git-lfs
     inetutils
     btop
+    pipes
+    playerctl
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
