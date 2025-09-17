@@ -7,7 +7,7 @@ in {
     go
     gcc
     cargo
-    python311
+    python312
     nodejs_20
     lua
     zig

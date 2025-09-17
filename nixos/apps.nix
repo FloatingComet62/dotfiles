@@ -34,6 +34,6 @@
   };
 
   # for Localsend
-  networking.firewall.allowedTCPPorts = [ 53317 ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
+  networking.firewall.allowedTCPPorts = [ 53317 8081 ];
+  networking.firewall.allowedUDPPorts = [ 53317 8081 ];
 }

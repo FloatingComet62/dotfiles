@@ -3,10 +3,11 @@
   users.users.aargh = {
     isNormalUser = true;
     description = "Aargh";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
+  programs.adb.enable = true;
   programs.fish.enable = true;
   home-manager.users.aargh = { pkgs, ... }: {
     programs.firefox.enable = true;

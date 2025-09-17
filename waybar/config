@@ -4,20 +4,23 @@
   "height": 36,
   "spacing": 0,
   "modules-left": [
-    "clock",
     "hyprland/workspaces",
-    "tray",
   ],
   "modules-right": [
     "network",
+    "custom/space",
     "battery",
+    "custom/space",
     "pulseaudio",
+    "custom/space",
     "custom/temperature",
+    "custom/space",
     "memory",
+    "custom/space",
     "cpu",
-    "custom/lock",
-    "custom/reboot",
-    "custom/power",
+    "custom/space",
+    "clock",
+    "custom/space",
   ],
   "hyprland/workspaces": {
     "disable-scroll": false,
@@ -28,32 +31,17 @@
     "*":[1,2,3,4,5,6,7,8,9]
     },
   },
-  "custom/lock": {
-    "format": "<span color='#00FFFF'>  </span>",
-    "on-click": "hyprlock",
-    "tooltip": true,
-    "tooltip-format": "Lock"
-  },
-  "custom/reboot": {
-    "format": "<span color='#FFD700'>  </span>",
-    "on-click": "systemctl reboot",
-    "tooltip": true,
-    "tooltip-format": "Reboot"
-  },
-  "custom/power": {
-    "format": "<span color='#FF4040'>  </span>",
-    "on-click": "systemctl poweroff",
-    "tooltip": true,
-    "tooltip-format": "Power"
+  "custom/space": {
+    "format": "  ",
   },
   "network": {
-    "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
-    "format-ethernet": "<span color='#7FFF00'> </span>Wired ",
-    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
-    "format-linked": "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
-    "format-disconnected": "<span color='#FF4040'>  </span>Disconnected ",
+    "format-wifi": "Signal(Wifi):<span color='#28CD41'>{essid}</span>",
+    "format-ethernet": "Signal(Ethernet)",
+    "format-linked": "Signal(Linked)<span color='#28CD41'>{ifname}</span>",
+    "format-disconnected": "Signal:<span color='#FF4040'>Offline</span>",
     "interval": 1,
     "on-click": "foot -e nmtui",
+    "tooltip-format": "Sending: <span color='#28CD41'>{bandwidthUpBytes}</span> Receiving: <span color='#00BFFF'>{bandwidthDownBytes}</span>",
   },
   "battery": {
     "states": {
@@ -65,15 +53,15 @@
       "on-discharging-critical": "notify-send -u critical 'Very Low Battery' -i /home/aargh/.config/waybar/battery_low.png",
       "on-charging-100": "notify-send -u normal 'Battery Full!' -i /home/aargh/.config/waybar/battery_high.png"
     },
-    "format": "<span color='#28CD41'> {icon} </span>{capacity}%",
-    "format-charging": "󱐋 {capacity}%",
+    "format": "Battery:<span color='#28CD41'>{capacity}%</span>",
+    "format-charging": "AC/DC:<span color='#28CD41'>{capacity}%</span>",
 	  "interval": 1,
     "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
     "tooltip": true
   },
   "pulseaudio": {
-    "format": "<span color='#00FF7F'> {icon} </span>{volume}%",
-    "format-muted": "<span color='#FF4040'> 󰖁 </span>0%",
+    "format": "Sound:<span color='#28CD41'>{volume}%</span>",
+    "format-muted": "Sound:<span color='#FF4040'>off</span>",
     "format-icons": {
       "headphone": "<span color='#BF00FF'>  </span>",
       "hands-free": "<span color='#BF00FF'>  </span>",
@@ -89,29 +77,26 @@
     },
     "on-click-right": "pavucontrol -t 3",
     "on-click": "pactl -- set-sink-mute 0 toggle",
-    "tooltip": true,
-    "tooltip-format": "Volume: {volume}%"
+    "tooltip": false,
   },
   "custom/temperature": {
     "exec": "sensors | awk '/^Package id 0:/ {print int($4) + 273}'",
-    "format": "<span color='#FFA500'>  </span>{} K",
+    "format": "Heat:<span color='#FFA500'>{}K</span>",
     "interval": 5,
-    "tooltip": true,
-    "tooltip-format": "CPU Temperature: {} K"
+    "tooltip": false,
   },
   "memory": {
-    "format": "<span color='#8A2BE2'>  </span>{used:0.1f}G/{total:0.1f}G ",
-    "tooltip": true,
-    "tooltip-format": "Memory: {used:0.2f}G/{total:0.2f}G"
+    "format": "RAM({total}G):<span color='#FFA500'>{used}G</span>",
+    "tooltip": false,
   },
   "cpu": {
-    "format": "<span color='#FF9F0A'>  </span>{usage}% ",
-    "tooltip": true
+    "format": "CPU:<span color='#FFA500'>{avg_frequency}Hz</span>",
+    "tooltip": true,
   },
   "clock": {
     "interval": 1,
     "timezone": "Asia/Kolkata",
-    "format": "<span color='#BF00FF'>  </span>{:%H:%M:%S} ",
+    "format": "Time:<span color='#BF00FF'>{:%H:%M:%S}</span>",
     "calendar": {
       "mode"          : "year",
       "mode-mon-col"  : 3,
@@ -127,11 +112,7 @@
       }
     },
     "tooltip": true,
-    "format-alt": "<span color='#BF00FF'>  </span>{:L%Y/%m/%d, %A} ",
+    "format-alt": "Time:<span color='#BF00FF'>{:L%Y/%m/%d, %A}</span>",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
-  },
-  "tray": {
-    "icon-size": 17,
-    "spacing": 6
   },
 }
