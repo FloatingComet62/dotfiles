@@ -13,6 +13,8 @@
     "custom/space",
     "pulseaudio",
     "custom/space",
+    "custom/brightness",
+    "custom/space",
     "custom/temperature",
     "custom/space",
     "memory",
@@ -35,33 +37,28 @@
     "format": "  ",
   },
   "network": {
-    "format-wifi": "Signal(Wifi):<span color='#28CD41'>{essid}</span>",
-    "format-ethernet": "Signal(Ethernet)",
-    "format-linked": "Signal(Linked)<span color='#28CD41'>{ifname}</span>",
-    "format-disconnected": "Signal:<span color='#FF4040'>Offline</span>",
+    "format-wifi": "Radio(Wifi):<span color='#28CD41'>{essid}</span>",
+    "format-ethernet": "Radio(Ethernet)",
+    "format-linked": "Radio(Linked)<span color='#28CD41'>{ifname}</span>",
+    "format-disconnected": "Radio:<span color='#FF4040'>Offline</span>",
     "interval": 1,
     "on-click": "foot -e nmtui",
     "tooltip-format": "Sending: <span color='#28CD41'>{bandwidthUpBytes}</span> Receiving: <span color='#00BFFF'>{bandwidthDownBytes}</span>",
   },
   "battery": {
+	  "interval": 1,
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "events": {
-      "on-discharging-warning": "notify-send -u normal 'Low Battery' -i /home/aargh/.config/waybar/battery_low.png",
-      "on-discharging-critical": "notify-send -u critical 'Very Low Battery' -i /home/aargh/.config/waybar/battery_low.png",
-      "on-charging-100": "notify-send -u normal 'Battery Full!' -i /home/aargh/.config/waybar/battery_high.png"
-    },
-    "format": "Battery:<span color='#28CD41'>{capacity}%</span>",
-    "format-charging": "AC/DC:<span color='#28CD41'>{capacity}%</span>",
-	  "interval": 1,
+    "format": "Electron:<span color='#28CD41'>{capacity}%</span>",
+    "format-charging": "Electron:<span color='#28CD41'>AC/DC({capacity}%)</span>",
     "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
     "tooltip": true
   },
   "pulseaudio": {
-    "format": "Sound:<span color='#28CD41'>{volume}%</span>",
-    "format-muted": "Sound:<span color='#FF4040'>off</span>",
+    "format": "Waves:<span color='#28CD41'>{volume}%</span>",
+    "format-muted": "Waves:<span color='#FF4040'>off</span>",
     "format-icons": {
       "headphone": "<span color='#BF00FF'>  </span>",
       "hands-free": "<span color='#BF00FF'>  </span>",
@@ -79,18 +76,24 @@
     "on-click": "pactl -- set-sink-mute 0 toggle",
     "tooltip": false,
   },
+  "custom/brightness": {
+    "exec": "brightnessctl | grep 'Current brightness' | grep -o '[0-9]\\+' | head -n 1",
+    "format": "Photons:<span color='#FFA500'>{}</span>",
+    "interval": 1,
+    "tooltip": false,
+  },
   "custom/temperature": {
     "exec": "sensors | awk '/^Package id 0:/ {print int($4) + 273}'",
-    "format": "Heat:<span color='#FFA500'>{}K</span>",
+    "format": "Radiation:<span color='#FFA500'>{}K</span>",
     "interval": 5,
     "tooltip": false,
   },
   "memory": {
-    "format": "RAM({total}G):<span color='#FFA500'>{used}G</span>",
+    "format": "Latch:<span color='#FFA500'>{used}G</span>",
     "tooltip": false,
   },
   "cpu": {
-    "format": "CPU:<span color='#FFA500'>{avg_frequency}Hz</span>",
+    "format": "Data Bus:<span color='#FFA500'>{avg_frequency}Hz</span>",
     "tooltip": true,
   },
   "clock": {
