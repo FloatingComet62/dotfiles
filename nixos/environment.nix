@@ -12,8 +12,9 @@
     pipes
     playerctl
     libnotify
-    (pkgs.python313.withPackages (ps: with ps; [
-    ]))
+    termusic
+    eza
+    lazygit
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

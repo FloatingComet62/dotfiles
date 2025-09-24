@@ -51,13 +51,13 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "Electron:<span color='#28CD41'>{capacity}%</span>",
-    "format-charging": "Electron:<span color='#28CD41'>AC/DC({capacity}%)</span>",
+    "format": "Electrons:<span color='#28CD41'>{capacity}</span>",
+    "format-charging": "Electrons:<span color='#28CD41'>AC/DC({capacity})</span>",
     "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
     "tooltip": true
   },
   "pulseaudio": {
-    "format": "Waves:<span color='#28CD41'>{volume}%</span>",
+    "format": "Waves:<span color='#28CD41'>{volume}</span>",
     "format-muted": "Waves:<span color='#FF4040'>off</span>",
     "format-icons": {
       "headphone": "<span color='#BF00FF'>  </span>",
@@ -99,7 +99,7 @@
   "clock": {
     "interval": 1,
     "timezone": "Asia/Kolkata",
-    "format": "Time:<span color='#BF00FF'>{:%H:%M:%S}</span>",
+    "format": "Spin:<span color='#BF00FF'>{:%H:%M:%S}</span>",
     "calendar": {
       "mode"          : "year",
       "mode-mon-col"  : 3,
@@ -115,7 +115,7 @@
       }
     },
     "tooltip": true,
-    "format-alt": "Time:<span color='#BF00FF'>{:L%Y/%m/%d, %A}</span>",
+    "format-alt": "Spin:<span color='#BF00FF'>{:L%Y/%m/%d, %A}</span>",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
   },
 }

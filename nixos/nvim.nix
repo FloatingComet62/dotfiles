@@ -8,6 +8,7 @@ in {
     gcc
     cargo
     python312
+    python312Packages.psutil
     nodejs_20
     lua
     zig
