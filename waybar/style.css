@@ -3,6 +3,8 @@
   font-weight: bold;
   font-size: 16px;
   color: #c6d0f5;
+  margin: 0;
+  border-radius: 0px;
 }
 
 #waybar {
@@ -18,11 +20,4 @@
 #workspaces button.active {
   background-color: #28CD41;
   color: #ea999c;
-  margin: 0;
-  border-radius: 0px;
-}
-
-#window {
-  font-weight: 500;
-  font-style: italic;
 }
