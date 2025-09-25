@@ -53,7 +53,8 @@
     },
     "format": "Electrons:<span color='#28CD41'>{capacity}</span>",
     "format-charging": "Electrons:<span color='#28CD41'>AC/DC({capacity})</span>",
-    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+    "format-discharging-warning": "Electrons:<span color='#FFA500'>{capacity}</span>",
+    "format-discharging-critical": "Electrons:<span color='#FF4040'>{capacity}</span>",
     "tooltip": true
   },
   "pulseaudio": {
