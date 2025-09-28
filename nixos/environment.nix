@@ -15,6 +15,7 @@
     termusic
     eza
     lazygit
+    fzf
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
