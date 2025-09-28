@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-sudo rm -rf btop hypr nixos nvim tmux waybar wofi yazi starship.toml
-sudo cp -r ~/.config/btop .
+sudo rm -rf hypr nixos nvim tmux waybar wofi yazi starship.toml
 sudo cp -r ~/.config/hypr .
 sudo cp -r /etc/nixos .
 sudo cp -r ~/.config/nvim .
