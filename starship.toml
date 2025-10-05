@@ -16,7 +16,7 @@ $golang\
 [](fg:lang_bg bg:background)\
 \n$character"""
 
-palette = "nightfox"
+palette = "gruvbox"
 
 [palettes.nightfox]
 red = "#ed8796"
@@ -31,6 +31,21 @@ git_bg = "#f5a97f"
 git_fg = "#5b6078"
 lang_bg = "#8bd5ca"
 lang_fg = "#5b6078"
+
+[palettes.gruvbox]
+red = "#fb4934"
+green = "#b8bb26"
+purple = "#d3869b"
+yellow = "#fabd2f"
+os_bg = "#282828"
+os_fg = "#ebdbb2"
+dir_bg = "#3c3836"
+dir_fg = "#928374"
+git_bg = "#fe8019"
+git_fg = "#665c54"
+lang_bg = "#83a598"
+lang_fg = "#504945"
+
 
 [os]
 disabled = false
