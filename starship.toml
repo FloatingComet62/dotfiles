@@ -6,6 +6,7 @@ $os\
 $username\
 [](bg:dir_bg fg:os_bg)\
 $directory\
+$custom_bash\
 [](fg:dir_bg bg:git_bg)\
 $git_branch\
 $git_status\
@@ -14,7 +15,7 @@ $nodejs\
 $rust\
 $golang\
 [](fg:lang_bg bg:background)\
-\n$character"""
+\n$character """
 
 palette = "gruvbox"
 
@@ -153,3 +154,8 @@ vimcmd_symbol = '[](bold fg:green)'
 vimcmd_replace_one_symbol = '[](bold fg:purple)'
 vimcmd_replace_symbol = '[](bold fg:purple)'
 vimcmd_visual_symbol = '[](bold fg:yellow)'
+
+[custom.bash]
+format = '[(fg:yellow bg:lang_bg)]($style)'
+command = 'echo "(bash)"'
+when = '[[ $SHELL == *bash* ]]'
