@@ -78,8 +78,8 @@
     "tooltip": false,
   },
   "custom/brightness": {
-    "exec": "brightnessctl | grep 'Current brightness' | grep -o '[0-9]\\+' | head -n 1",
-    "format": "Photons:<span color='#FFA500'>{}</span>",
+    "exec": "~/.config/waybar/brightness.sh",
+    "format": "{}",
     "interval": 1,
     "tooltip": false,
   },
