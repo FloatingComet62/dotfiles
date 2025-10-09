@@ -19,5 +19,6 @@ in {
     lm_sensors
     grim
     slurp
+    hyprsunset
   ];
 }
