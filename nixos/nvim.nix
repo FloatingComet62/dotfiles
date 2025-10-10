@@ -30,6 +30,7 @@ in {
     zls
     typescript-language-server
     javascript-typescript-langserver
+    pyright
     (pkgs.python3.withPackages (ps: with ps; [
       python-lsp-server
       python-lsp-jsonrpc

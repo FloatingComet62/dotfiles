@@ -9,8 +9,8 @@
   };
   programs.adb.enable = true;
   programs.fish.enable = true;
+  programs.firefox.enable = true;
   home-manager.users.aargh = { pkgs, ... }: {
-    programs.firefox.enable = true;
     home.stateVersion = "25.05";
   };
   home-manager.backupFileExtension = "hm-backup";

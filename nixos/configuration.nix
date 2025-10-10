@@ -14,7 +14,7 @@
       <home-manager/nixos>
     ];
 
-  networking.hostName = "aargh-omen";
+  networking.hostName = "pegasus";
   networking.networkmanager.enable = true;
 
   nixpkgs.config.allowUnfree = true;

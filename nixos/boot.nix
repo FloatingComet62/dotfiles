@@ -24,15 +24,15 @@
       '';
       default = "saved";
       theme = pkgs.stdenv.mkDerivation {
-        pname = "distro-grub-themes";
-        version = "3.1";
+        pname = "space-isolation";
+        version = "0.2";
         src = pkgs.fetchFromGitHub {
-          owner = "AdisonCavani";
-          repo = "distro-grub-themes";
-          rev = "v3.1";
-          hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+          owner = "callmenoodles";
+          repo = "space-isolation";
+          rev = "v0.2.0";
+          hash = "sha256:180796bqzpcwcbk2hlwz2r0vw58crnvhss1hrc7rzp2s8y3zhf0w";
         };
-        installPhase = "cp -r customize/hp $out";
+        installPhase = "cp -r 1920x1080 $out";
       };
     };
     efi.canTouchEfiVariables = true;
