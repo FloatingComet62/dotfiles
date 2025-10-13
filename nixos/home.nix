@@ -19,16 +19,4 @@
     dates = "weekly";
     options = "--delete-older-than 10d";
   };
-
-
-  environment.systemPackages = with pkgs; [
-    fastfetch
-    vim
-    wget
-    git
-    nmap
-    dust
-    gnome-tweaks
-    home-manager
-  ];
 }

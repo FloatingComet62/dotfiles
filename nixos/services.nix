@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  imports =
-    [
-      ./desktop-environment.nix
-    ];
   services.xserver.xkb = {
     layout = "us";
     variant = "";

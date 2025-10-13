@@ -7,8 +7,10 @@
       ./services.nix
       ./nvidia.nix
       ./home.nix
+      ./desktop-environment.nix
       ./environment.nix
       ./nvim.nix
+      ./languages/index.nix
       ./apps.nix
       ./tmux.nix
       <home-manager/nixos>

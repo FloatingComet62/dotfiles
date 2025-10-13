@@ -12,21 +12,14 @@
     wineWowPackages.stable
     sqlite
     libreoffice-qt6-fresh
-
     kdePackages.dolphin
     yazi
-    # kio-extras
-    # ffmpegthumbs
-    # kdePackages.kdegraphics-thumbnailers
-    # kdePackages.kimageformats
-
     android-tools
     scrcpy
   ];
 
   xdg = {
     mime.enable = true;
-
     mime.defaultApplications = {
       # don't use libreoffice draw for pdfs, use firefox
       "application/pdf" = [ "firefox.desktop" ];

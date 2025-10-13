@@ -1,11 +1,15 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    gcc
-    # python312 # already added with nvim.nix
+    fastfetch
+    vim
+    wget
+    git
+    nmap
+    dust
+    home-manager
     zoxide
     starship
-    cmake
     git-lfs
     inetutils
     btop
