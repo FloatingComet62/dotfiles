@@ -12,7 +12,7 @@
 <p align="center">
   <a href="#wallpapers">Wallpapers</a> •
   <a href="#customization">Customization</a> •
-  <a hre="#docs">Docs</a>
+  <a href="#docs">Docs</a>
 </p>
 
 ![desktop_screenshot](./assets/desktop.png)
