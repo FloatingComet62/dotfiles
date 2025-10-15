@@ -10,7 +10,7 @@
       ./desktop-environment.nix
       ./environment.nix
       ./nvim.nix
-      ./languages/index.nix
+      ./languages
       ./apps.nix
       ./tmux.nix
       <home-manager/nixos>
