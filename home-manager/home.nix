@@ -4,6 +4,7 @@
   home.homeDirectory = "/home/aargh";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
+    devenv
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-in {
+{
   environment.systemPackages = with pkgs; [
     beamMinimal27Packages.elixir
     beamMinimal27Packages.erlang

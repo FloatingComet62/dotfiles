@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-in {
+{
   environment.systemPackages = with pkgs; [
     lua
     lua-language-server
