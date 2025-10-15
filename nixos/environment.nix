@@ -2,24 +2,27 @@
 {
   environment.systemPackages = with pkgs; [
     fastfetch
+    pipes
     vim
+    dust
+    btop
+    yazi
+    scrcpy
+
     wget
     git
+    git-lfs
     nmap
-    dust
-    home-manager
+    inetutils
+    android-tools
+    sqlite
+
     zoxide
     starship
-    git-lfs
-    inetutils
-    btop
-    pipes
-    playerctl
-    libnotify
-    termusic
     eza
-    lazygit
     fzf
+    termusic
+    lazygit
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

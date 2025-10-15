@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-# let unstable = import <nixos-unstable> { config.allowUnfree = true; };
 {
   programs.tmux.enable = true;
   programs.tmux.plugins = with pkgs.tmuxPlugins; [

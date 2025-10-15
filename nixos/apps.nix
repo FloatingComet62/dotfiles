@@ -7,15 +7,11 @@
     localsend
     bitwarden
     obsidian
-    jetbrains.pycharm-professional
-    jetbrains.clion
-    wineWowPackages.stable
-    sqlite
+    # jetbrains.pycharm-professional
+    # jetbrains.clion
     libreoffice-qt6-fresh
     kdePackages.dolphin
-    yazi
-    android-tools
-    scrcpy
+    wineWowPackages.stable
   ];
 
   xdg = {

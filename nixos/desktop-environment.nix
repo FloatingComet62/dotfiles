@@ -20,5 +20,7 @@ in {
     grim
     slurp
     hyprsunset
+    playerctl
+    libnotify
   ];
 }
