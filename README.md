@@ -103,7 +103,6 @@ IF YOU ARE NOT LEFT HANDED, change this in hypr/hyprland/input.conf\["input"\]\[
 |Win + =|Zoom in/out|
 |Win + \[|Increase red shift (night light)|
 |Win + \]|Decrease red shift|
-|OMEN Key (For an HP OMEN Laptop)|Run OLLAMA|
 
 ### Fonts
 Jetbrains Mono Nerd Font
