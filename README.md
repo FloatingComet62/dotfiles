@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="#wallpapers">Wallpapers</a> •
+  <a href="#installation">Installation</a> •
   <a href="#customization">Customization</a> •
   <a href="#docs">Docs</a>
 </p>
@@ -27,6 +28,14 @@
 And more in Wallpapers/
 
 [Credit for F1 wallpapers](https://photos.google.com/share/AF1QipMSCLnAN3FpvqaMdcMQfXJU9tHow9PLA1bm4RaeQhzq6EpmLGDnmq1ht2dNqLwODg?pli=1&key=N0xtODRJMHl3cjNwRlVoa2dEanRxZm14TFpBTGpB)
+
+## Installation
+Adjust username and hostname in flake.nix according to your needs<br>
+then
+```
+chmod +x install.sh
+./install.sh
+```
 
 ## Customization
 You can use this project outside of NixOS as well, just by ignoring the nixos directory.<br>
