@@ -8,6 +8,7 @@
     btop
     yazi
     scrcpy
+    cloc
 
     wget
     git

@@ -3,9 +3,9 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./cachix.nix
       ./boot.nix
       ./services.nix
-      ./nvidia.nix
       ./home.nix
       ./desktop-environment.nix
       ./environment.nix
@@ -15,6 +15,11 @@
       ./tmux.nix
       <home-manager/nixos>
     ];
+
+  nix.settings = {
+    cores = 6;
+    max-jobs = 2;
+  };
 
   networking.hostName = "pegasus";
   networking.networkmanager.enable = true;

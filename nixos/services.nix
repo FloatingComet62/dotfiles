@@ -21,10 +21,6 @@
     bind_ip = "127.0.0.1";
     package = pkgs.mongodb;
   };
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-  };
   services.kanata = {
     enable = true;
     keyboards = {

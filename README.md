@@ -4,7 +4,7 @@
   <br>
 </h1>
 <h4 align="center">
-  A configuration for NixOS + Hyprland + Nvidia CUDA setup<br>
+  A configuration for NixOS + Hyprland<br>
   Minimalistic setup for F1 fans and programmers<br>
   Tmux for terminal sessions
 </h4>

@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 {
-  fileSystems."/boot".device = "/dev/nvme0n1p6";
   boot.loader = {
     grub = {
       enable = true;
