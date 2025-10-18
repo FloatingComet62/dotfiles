@@ -10,6 +10,7 @@
       ./desktop-environment.nix
       ./environment.nix
       ./nvim.nix
+      ./nvidia.nix
       ./languages
       ./apps.nix
       ./tmux.nix
