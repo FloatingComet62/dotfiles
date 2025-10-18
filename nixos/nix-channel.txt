@@ -1,3 +1,0 @@
-home-manager https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz
-nix-ld https://github.com/Mic92/nix-ld/archive/main.tar.gz
-nixos-unstable https://nixos.org/channels/nixos-unstable

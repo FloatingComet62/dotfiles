@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo rm -rf hypr foot nixos nvim tmux waybar wofi yazi home-manager Wallpapers starship.toml
+sudo rm -rf hypr foot nixos nvim tmux waybar wofi yazi Wallpapers starship.toml
 sudo cp -r ~/.config/hypr .
 sudo cp -r ~/.config/foot .
 sudo cp -r ~/.config/nvim .

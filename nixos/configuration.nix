@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, hostname, ... }:
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ../hardware-configuration.nix
       ./cachix.nix
       ./boot.nix
       ./services.nix
@@ -14,20 +14,24 @@
       ./languages
       ./apps.nix
       ./tmux.nix
-      <home-manager/nixos>
     ];
 
   nix.settings = {
     cores = 6;
     max-jobs = 2;
+    experimental-features = "nix-command flakes";
+    trusted-users = [ "root" username ];
+  };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
-  networking.hostName = "pegasus";
+  networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = "nix-command flakes";
-  nix.settings.trusted-users = [ "root" "aargh" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

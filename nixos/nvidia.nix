@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
-let unstable = import <nixos-unstable> { config.allowUnfree = true; };
-in {
+{
   hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;

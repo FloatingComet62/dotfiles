@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
-  home.username = "aargh";
-  home.homeDirectory = "/home/aargh";
-  home.stateVersion = "24.11";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
+  home.stateVersion = "25.05";
   home.packages = with pkgs; [
     devenv
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -41,7 +41,7 @@
     # '';
   };
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
   programs.home-manager.enable = true;
 }
