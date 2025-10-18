@@ -12,4 +12,4 @@ sudo cp -r hardware-configuration.nix /etc/nixos
 
 sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
 
-sudo nixos-rebuild switch --flake .#pegasus
+sudo nixos-rebuild switch --flake .#main
