@@ -5,6 +5,8 @@ mkdir -p ~/.config
 sudo cp -r hypr foot nvim tmux waybar wofi yazi starship.toml ~/.config
 sudo cp -r Wallpapers ~/Pictures
 
+echo "Rebuilding..."
+
 # Although we are sending the configs to /etc/nixos, we aren't actually using them with the flake setup
 # Consider the operation purely for vanity
 sudo cp -r nixos /etc
