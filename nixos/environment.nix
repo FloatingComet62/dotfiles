@@ -9,6 +9,7 @@
     yazi
     scrcpy
     cloc
+    wf-recorder
 
     wget
     git

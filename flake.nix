@@ -15,6 +15,7 @@
       system = "x86_64-linux";
       username = "aargh";
       hostname = "pegasus";
+      symlinkRoot = self;
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -26,7 +27,7 @@
     in {
       nixosConfigurations.main = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs username hostname unstable; };
+        specialArgs = { inherit inputs username hostname unstable symlinkRoot; };
 
         modules = [
           ./nixos/configuration.nix
@@ -34,7 +35,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit username unstable; };
+            home-manager.extraSpecialArgs = { inherit username unstable symlinkRoot; };
             home-manager.backupFileExtension = "hm-backup";
             home-manager.users.${username} = import ./home-manager/home.nix;
           }

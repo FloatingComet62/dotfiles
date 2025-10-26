@@ -12,6 +12,7 @@
     libreoffice-qt6-fresh
     kdePackages.dolphin
     wineWowPackages.stable
+    vlc
   ];
 
   xdg = {
