@@ -15,7 +15,10 @@
       system = "x86_64-linux";
       username = "aargh";
       hostname = "pegasus";
-      symlinkRoot = self;
+
+      # This is where I have keep the dotfiles folder, replace it accordingly
+      symlinkRoot = "/home/${username}/dotfiles";
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
