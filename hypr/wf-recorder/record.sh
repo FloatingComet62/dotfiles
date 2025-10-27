@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-notify-send "mkc"
 # Check if a recording is already in progress
 if pgrep -x wf-recorder > /dev/null
 then
@@ -8,5 +7,7 @@ then
     notify-send -h string:wf-recorder:record -t 1000 "Recording Stopped" && pkill wf-recorder
 else
     # If not recording, start it
-    notify-send -h string:wf-recorder:record -t 1000 "Recording Started" && wf-recorder -a [audio_device] -f /path/to/your/video.mp4
+    mkdir -p ~/Videos
+    mkdir -p ~/Videos/Screencasts/
+    notify-send -h string:wf-recorder:record -t 1000 "Recording Started" && wf-recorder -f ~/Videos/Screencasts/$(date '+%H%M%S-%d-%m-%Y').mp4
 fi
