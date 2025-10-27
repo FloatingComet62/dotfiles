@@ -30,11 +30,17 @@ And more in Wallpapers/
 [Credit for F1 wallpapers](https://photos.google.com/share/AF1QipMSCLnAN3FpvqaMdcMQfXJU9tHow9PLA1bm4RaeQhzq6EpmLGDnmq1ht2dNqLwODg?pli=1&key=N0xtODRJMHl3cjNwRlVoa2dEanRxZm14TFpBTGpB)
 
 ## Installation
-Adjust username and hostname in flake.nix according to your needs<br>
+Adjust username, hostname and download destination in flake.nix according to your needs<br>
 then
 ```
 chmod +x install.sh
 ./install.sh
+```
+
+Then for any changes in nixos/ would require
+```
+chmod +x nix.sh
+./nix.sh
 ```
 
 ## Customization
@@ -109,6 +115,7 @@ IF YOU ARE NOT LEFT HANDED, change this in hypr/hyprland/input.conf\["input"\]\[
 |PrintSrc|Take a fullscreen screenshot and save it in ~/Pictures/Screenshots|
 |Shift + PrintSrc|Take a partial screen screenshot and save it in ~/Pictures/Screenshots|
 |Win + PrintSrc|Take a partial screen screenshot and copy it to clipboard|
+|Win + Shift + R|Start/Stop screen recording (without audio)|
 |Win + =|Zoom in/out|
 |Win + \[|Increase red shift (night light)|
 |Win + \]|Decrease red shift|
@@ -148,3 +155,4 @@ Configure in nixos/apps.nix
 - Libreoffice
 - Dolphin
 - Firefox
+- VLC
