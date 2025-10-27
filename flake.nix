@@ -15,6 +15,7 @@
       system = "x86_64-linux";
       username = "aargh";
       hostname = "pegasus";
+      nvidia = true;
 
       # This is where I have keep the dotfiles folder, replace it accordingly
       symlinkRoot = "/home/${username}/dotfiles";
@@ -30,7 +31,9 @@
     in {
       nixosConfigurations.main = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs username hostname unstable symlinkRoot; };
+        specialArgs = {
+          inherit inputs username hostname unstable symlinkRoot nvidia;
+        };
 
         modules = [
           ./nixos/configuration.nix
@@ -38,7 +41,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit username unstable symlinkRoot; };
+            home-manager.extraSpecialArgs = {
+              inherit username unstable symlinkRoot;
+            };
             home-manager.backupFileExtension = "hm-backup";
             home-manager.users.${username} = import ./home-manager/home.nix;
           }

@@ -1,4 +1,4 @@
-{ config, pkgs, username, hostname, ... }:
+{ config, pkgs, username, hostname, nvidia, ... }:
 {
   imports =
     [
@@ -10,11 +10,12 @@
       ./desktop-environment.nix
       ./environment.nix
       ./nvim.nix
-      ./nvidia.nix
       ./languages
       ./apps.nix
       ./tmux.nix
-    ];
+    ] ++ (if nvidia then [
+      ./nvidia.nix
+    ] else []);
 
   nix.settings = {
     cores = 6;
