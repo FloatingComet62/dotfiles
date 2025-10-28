@@ -20,6 +20,17 @@ require("lazy").setup({
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
+    config = function()
+      require "options"
+      local nvim_tree_options = require "nvchad.configs.nvimtree"
+      nvim_tree_options.filters.dotfiles = false -- To show dotfiles as well
+      nvim_tree_options.filters.git_ignored = false -- Set this to false to show git ignored files
+      nvim_tree_options.git = {
+        enable = true,
+        ignore = false, -- Set this to false to show git ignored files
+        timeout = 500,
+      }
+    end,
   },
 
   { import = "plugins" },
