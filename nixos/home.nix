@@ -48,6 +48,7 @@ alias py=python
 alias tmux="tmux -u"
 alias snvim="sudo -E -s nvim"
 alias ls="eza"
+alias wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat"
 
 set -U fish_user_paths /home/comet/.cargo/bin $fish_user_paths
 set -U fish_user_paths /opt/android-sdk/cmdline-tools/latest/bin $fish_user_paths

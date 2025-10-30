@@ -26,6 +26,7 @@ let
 
   confDirs = linkConfDirs [
     "foot"
+    "fortune"
     "hypr"
     "nvim"
     "tmux"

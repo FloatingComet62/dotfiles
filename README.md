@@ -51,6 +51,7 @@ Check ./sync.sh to find where each directory is sourced from
 ## Docs
 
 ### Features
+- Ly Display Manager for login
 - hyprland as desktop environment
 - foot as terminal
 - waybar for top bar

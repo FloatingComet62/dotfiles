@@ -25,6 +25,9 @@
     fzf
     termusic
     lazygit
+    fortune
+    cowsay
+    lolcat
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
