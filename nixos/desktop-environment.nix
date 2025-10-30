@@ -2,7 +2,7 @@
 let unstable = import <nixos-unstable> { config.allowUnfree = true; };
 in {
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.ly.enable = true;
   services.xserver.desktopManager.gnome.enable = false;
   programs.hyprland.enable = true;
   programs.hyprlock.enable = true;
