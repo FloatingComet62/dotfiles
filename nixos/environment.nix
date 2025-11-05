@@ -10,6 +10,7 @@
     scrcpy
     cloc
     wf-recorder
+    cava
 
     wget
     git

@@ -5,8 +5,7 @@
 </h1>
 <h4 align="center">
   A configuration for NixOS + Hyprland<br>
-  Minimalistic setup for F1 fans and programmers<br>
-  Tmux for terminal sessions
+  Minimalistic setup for F1 fans and programmers
 </h4>
 
 <p align="center">
@@ -51,8 +50,9 @@ Check ./sync.sh to find where each directory is sourced from
 ## Docs
 
 ### Features
-- Ly Display Manager for login
+- ly Display Manager for login
 - hyprland as desktop environment
+- tmux for terminal sessions
 - foot as terminal
 - waybar for top bar
 - hyprsunset for nightlight
@@ -66,7 +66,7 @@ Check ./sync.sh to find where each directory is sourced from
 Low battery warning notifications
 - 30% (Low)
 - 15% (Critical)
-Change these values in waybar/config\["battery"\]\["states"\] & hypr/battery-notif.sh<br>
+Change these values in waybar/config:battery:states & hypr/battery-notif.sh<br>
 <br>
 Wallpapers changes every 10 mintues and picks from ~/Pictures/Screenshots
 
@@ -93,7 +93,7 @@ Styling in waybar/style.css<br>
 Configure in hypr/hyprland/keybinds.conf
 
 I am left handed so my mouse is in left handed mode<br>
-IF YOU ARE NOT LEFT HANDED, change this in hypr/hyprland/input.conf\["input"\]\["left_handed"\]
+IF YOU ARE NOT LEFT HANDED, change this in hypr/hyprland/input.conf:input:left_handed
 |Keybind|Description|
 |-|-|
 |Win + T|**Spawn Terminal** (foot)|
