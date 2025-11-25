@@ -4,6 +4,7 @@
     [
       ./beam.nix
       ./c.nix
+      ./asm.nix
       ./go.nix
       ./javascript.nix
       ./lua.nix

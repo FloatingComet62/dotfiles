@@ -3,10 +3,11 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "User";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
+  virtualisation.docker.enable = true;
   programs.adb.enable = true;
   programs.fish = {
     enable = true;
@@ -49,7 +50,13 @@ alias tmux="tmux -u"
 alias snvim="sudo -E -s nvim"
 alias ls="eza"
 alias wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat"
+function mkcd
+    mkdir -p $argv[1]
+    cd $argv[1]
+end
 
+set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig $HOME/.local/lib64/pkgconfig
+set -x LD_LIBRARY_PATH $HOME/.local/lib $HOME/.local/lib64
 set -U fish_user_paths /home/comet/.cargo/bin $fish_user_paths
 set -U fish_user_paths /opt/android-sdk/cmdline-tools/latest/bin $fish_user_paths
 set -U fish_user_paths /opt/android-sdk/platform-tools $fish_user_paths
