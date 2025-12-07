@@ -3,15 +3,15 @@ let unstable = import <nixos-unstable> { config.allowUnfree = true; };
 in {
   services.xserver.enable = true;
   services.displayManager.ly.enable = true;
-  services.xserver.desktopManager.gnome.enable = false;
+  services.desktopManager.gnome.enable = false;
   programs.hyprland.enable = true;
   programs.hyprlock.enable = true;
   programs.foot.enable = true;
-  programs.waybar.enable = true;       # status bar
-  programs.sway.enable = true;     # lock screen, idle management
-  programs.dconf.enable = true;        # needed for gsettings
+  programs.waybar.enable = true;
+  programs.sway.enable = true;
+  programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
-    wofi # app launcher
+    wofi
     adwaita-icon-theme
     swaybg
     wl-clipboard

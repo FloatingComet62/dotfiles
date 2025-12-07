@@ -2,10 +2,11 @@
 {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    gimp
     vscode
     discord
     localsend
-    bitwarden
+    bitwarden-desktop
     obsidian
     # jetbrains.pycharm-professional
     # jetbrains.clion

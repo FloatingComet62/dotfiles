@@ -147,6 +147,7 @@ Configure in nixos/environment.nix
 
 ### Applications
 Configure in nixos/apps.nix
+- Gimp
 - Vscode
 - Discord
 - Bitwarden
