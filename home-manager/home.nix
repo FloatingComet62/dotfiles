@@ -29,8 +29,8 @@ let
     "fortune"
     "hypr"
     "nvim"
+    "quickshell"
     "tmux"
-    "waybar"
     "wofi"
     "yazi"
   ];

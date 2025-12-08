@@ -8,9 +8,19 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    quickshell,
+  ... }@inputs:
     let
       system = "x86_64-linux";
       username = "aargh";
@@ -32,7 +42,7 @@
       nixosConfigurations.main = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit inputs username hostname unstable symlinkRoot nvidia;
+          inherit quickshell inputs username hostname unstable symlinkRoot nvidia;
         };
 
         modules = [

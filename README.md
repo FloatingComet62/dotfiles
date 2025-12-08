@@ -54,7 +54,7 @@ Check ./sync.sh to find where each directory is sourced from
 - hyprland as desktop environment
 - tmux for terminal sessions
 - foot as terminal
-- waybar for top bar
+- quickshell for top bar & elements
 - hyprsunset for nightlight
 - hyprlock for lock screen
 - nvim using NvChad
@@ -66,15 +66,14 @@ Check ./sync.sh to find where each directory is sourced from
 Low battery warning notifications
 - 30% (Low)
 - 15% (Critical)
-Change these values in waybar/config:battery:states & hypr/battery-notif.sh<br>
+Change these values in quickshell/shell.qml(look for "redBatteryPoint" & "orangeBatteryPoint") & hypr/battery-notif.sh<br>
 <br>
 Wallpapers changes every 10 mintues and picks from ~/Pictures/Screenshots
 
-### Waybar
-![waybar](./assets/waybar.png)
+### Quickshell
+![topbar](./assets/topbar.png)
 
-Configure in waybar/config<br>
-Styling in waybar/style.css<br>
+Configure in quickshell/shell.qml<br>
 
 
 |Label|Description|
