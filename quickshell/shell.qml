@@ -1,3 +1,4 @@
+import "./items"
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
@@ -5,13 +6,15 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 
-PanelWindow {
-  id: root
+ShellRoot {
+  id: shellRoot
 
   property int redBatteryPoint: 15
   property int orangeBatteryPoint: 30
 
   property color black: "#000000"
+  property color gray: "#202020"
+  property color lightgray: "#404040"
   property color white: "#ffffff"
   property color green: "#28CD41"
   property color red: "#FF4040"
@@ -21,351 +24,175 @@ PanelWindow {
   property string fontFamily: "JetBrainsMono Nerd Font"
   property int fontSize: 18
 
-  property int cpuUsage: 0
-  property int lastCpuTotal: 0
-  property int lastCpuIdle: 0
+  property bool appLauncherVisible: false
 
-  Process {
-    id: cpuProc
-    command: ["sh", "-c", "head -1 /proc/stat"]
-
-    stdout: SplitParser {
-      onRead: data => {
-        var p = data.trim().split(/\s+/)
-        var idle = parseInt(p[4]) + parseInt(p[5])
-        var total = p.slice(1, 8).reduce((a, b) => a + parseInt(b), 0)
-        if (lastCpuTotal > 0) {
-          cpuUsage = Math.round(100 * (1 - (idle - lastCpuIdle) / (total - lastCpuTotal)))
-        }
-        lastCpuTotal = total
-        lastCpuIdle = idle
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  property int memUsage: 0
-  Process {
-    id: memProc
-    command: ["sh", "-c", "free | grep Mem"]
-    stdout: SplitParser {
-      onRead: data => {
-        var parts = data.trim().split(/\s+/)
-        var total = parseInt(parts[1]) || 1
-        var used = parseInt(parts[2]) || 0
-        memUsage = Math.round(100 * used / total)
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  property int cpu_temperature: 6000
-  Process {
-    id: temperatureProc
-    command: ["sh", "-c", "~/.config/quickshell/cpu_temp.sh"]
-    stdout: SplitParser {
-      onRead: data => {
-        cpu_temperature = parseInt(data.trim()) || 13;
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  property int brightness: 100
-  property int temperature: 6000
-  Process {
-    id: brightnessProc
-    command: ["sh", "-c", "~/.config/quickshell/brightness.sh"]
-    stdout: SplitParser {
-      onRead: data => {
-        var parts = data.trim().split(/\s+/)
-        brightness = parseInt(parts[0]) || 100
-        temperature = parseInt(parts[1]) || 6000
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  property int volume: 12
-  Process {
-    id: volumeProc
-    command: ["sh", "-c", "~/.config/quickshell/volume.sh"]
-    stdout: SplitParser {
-      onRead: data => {
-        volume = parseInt(data.trim()) || 13;
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  property int battery: 12
-  Process {
-    id: batteryProc
-    command: ["sh", "-c", "~/.config/quickshell/battery.sh"]
-    stdout: SplitParser {
-      onRead: data => {
-        battery = parseInt(data.trim()) || 13;
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  property string wifiName: "Offline"
-  Process {
-    id: networkProc
-    command: ["sh", "-c", "~/.config/quickshell/network.sh"]
-    stdout: SplitParser {
-      onRead: data => {
-        var parts = data.trim().split(/\s+/)
-        wifiName = parts[0];
-      }
-    }
-    Component.onCompleted: running = true
-  }
-
-  Timer {
-    interval: 2000
-    running: true
-    repeat: true
-    onTriggered: {
-      cpuProc.running = true
-      memProc.running = true
-      brightnessProc.running = true
-      volumeProc.running = true
-      batteryProc.running = true
-      networkProc.running = true
-      temperatureProc.running = true
+  // focus: true
+  // Keys.onPressed: (event) => {
+  //   if (event.key === Qt.Key_R && event.modifiers & Qt.MetaModifier) {
+  //     Quickshell.execDetached(["notify-send", "ok"])
+  //     appLauncherVisible = true;
+  //   }
+  // }
+  // Component.onCompleted: {
+  //   Hyprland.rawSignals = true;
+  // }
+  // Connections {
+  //   target: Hyprland
+  //
+  //   function onEvent(sig) {
+  //     Quickshell.execDetached(["notify-send", "ok"])
+  //     console.log("Raw = ", sig);
+  //   }
+  // }
+  GlobalShortcut {
+    id: launcherShortcut
+    name: "toggleLauncher"
+    onPressed: {
+      appLauncherVisible = true
     }
   }
-  Process {
-    id: networkManagerProc
-    command: ["foot", "-e", "nmtui"]
-    Component.onCompleted: running = false
-  }
 
-  anchors.top: true
-  anchors.left: true
-  anchors.right: true
-  implicitHeight: 32
-  color: root.black
+  Variants {
+    model: Quickshell.screens
+    PanelWindow {
+      id: root
 
-  RowLayout {
-    anchors.fill: parent
-    anchors.margins: 0
+      property int cpuUsage: 0
+      property int lastCpuTotal: 0
+      property int lastCpuIdle: 0
+      property int memUsage: 0
+      property int cpu_temperature: 6000
+      property int brightness: 100
+      property int temperature: 6000
+      property int volume: 12
+      property int battery: 12
+      property string wifiName: "Offline"
 
-    Repeater {
-      model: 5
+      Procs {}
+      Process {
+        id: networkManagerProc
+        command: ["foot", "-e", "nmtui"]
+        Component.onCompleted: running = false
+      }
 
-      Text {
-        property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
+      anchors.top: true
+      anchors.left: true
+      anchors.right: true
+      implicitHeight: 32
+      color: shellRoot.black
 
-        text: index + 1
-        color: isActive ? root.green : root.white
-        font {
-          pixelSize: root.fontSize;
-          bold: true;
-        }
+      RowLayout {
+        anchors.fill: parent
+        anchors.margins: 0
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
 
-        MouseArea {
-          anchors.fill: parent
-          onClicked: Hyprland.dispatch("workspace " + (index + 1))
-        }
+        Workspace {}
+        Item { Layout.fillWidth: true }
+        Radio {}
+        Electrons {}
+        Waves {}
+        Photons {}
+        Radiation {}
+        DataBus {}
+        Latch {}
+        Spin {}
       }
-    }
-    Item { Layout.fillWidth: true }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Radio:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: wifiName
-        color: wifiName == "Offline" ? root.red : root.green
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
 
-        MouseArea {
-          anchors.fill: parent
-          onClicked: networkManagerProc.running = true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Electrons:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: battery
-        color: (battery <= redBatteryPoint) ? root.red : ((battery <= orangeBatteryPoint) ? root.orange : root.green)
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Waves:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: volume
-        color: root.green
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Photons:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: brightness
-        color: root.orange
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-      Text {
-        text: "(" + temperature + "K)"
-        color: root.red
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Radiation:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: cpu_temperature + "K"
-        color: root.orange
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Data Bus:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: cpuUsage
-        color: root.orange
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Latch:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        text: memUsage
-        color: root.orange
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
-      }
-    }
-    RowLayout {
-      spacing: 0
-      Text {
-        text: " Spin:"
-        color: root.white
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-        }
-      }
-      Text {
-        property var formatMode: "HH:mm:ss"
+      PanelWindow {
+        id: apps
 
-        id: clock
-        text: Qt.formatDateTime(new Date(), clock.formatMode)
-        color: root.purple
-        font {
-          family: root.fontFamily
-          pixelSize: root.fontSize
-          bold: true
-        }
+        anchors.top: true
+        anchors.right: true
+        anchors.bottom: true
+        implicitWidth: 32
+        color: shellRoot.black
 
-        Timer {
-          interval: 1000
-          running: true
-          repeat: true
-          onTriggered: clock.text = Qt.formatDateTime(new Date(), clock.formatMode)
-        }
-
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            if (clock.formatMode === "HH:mm:ss") {
-              clock.formatMode = "yyyy/MM/dd, dddd"
-            } else {
-              clock.formatMode = "HH:mm:ss"
-            }
-            clock.text = Qt.formatDateTime(new Date(), clock.formatMode)
+        ColumnLayout {
+          IconButton {
+            icon: ""
+            tooltip: "Firefox"
+            onClicked: Quickshell.execDetached(["firefox"])
           }
+          IconButton {
+            icon: ""
+            tooltip: "Dolphin"
+            onClicked: Quickshell.execDetached(["dolphin"])
+          }
+          IconButton {
+            icon: ""
+            tooltip: "Vscode"
+            onClicked: Quickshell.execDetached(["code"])
+          }
+          IconButton {
+            icon: ""
+            tooltip: "Localsend"
+            onClicked: Quickshell.execDetached(["localsend_app"])
+          }
+          IconButton {
+            icon: ""
+            tooltip: "Bitwarden"
+            onClicked: Quickshell.execDetached(["bitwarden"])
+          }
+          IconButton {
+            icon: ""
+            tooltip: "GIMP"
+            onClicked: Quickshell.execDetached(["gimp"])
+          }
+          IconButton {
+            icon: "󰠮"
+            tooltip: "Obsidian"
+            onClicked: Quickshell.execDetached(["obsidian"])
+          }
+          IconButton {
+            icon: ""
+            tooltip: "Discord"
+            onClicked: Quickshell.execDetached(["discord"])
+          }
+          IconButton {
+            icon: "󰕼"
+            tooltip: "VLC"
+            onClicked: Quickshell.execDetached(["vlc"])
+          }
+        }
+      }
+    }
+  }
+  Variants {
+    model: Quickshell.screens
+    
+    PanelWindow {
+      visible: shellRoot.appLauncherVisible
+      
+      anchors {
+        top: true
+        left: true
+      }
+      
+      margins {
+        top: Screen.height/2 - 300
+        left: Screen.width/2 - 200
+      }
+      
+      implicitWidth: 400
+      implicitHeight: 600
+      
+      color: "transparent"
+      exclusiveZone: 0
+      
+      WlrLayershell.layer: WlrLayer.Overlay
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+      
+      Behavior on height {
+        NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
+      }
+      
+      AppLauncher {
+        anchors.fill: parent
+        isVisible: shellRoot.appLauncherVisible
+        
+        onRequestClose: {
+          shellRoot.appLauncherVisible = false
         }
       }
     }

@@ -31,7 +31,6 @@ let
     "nvim"
     "quickshell"
     "tmux"
-    "wofi"
     "yazi"
   ];
 

@@ -10,7 +10,6 @@
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     quickshell.packages.${pkgs.system}.quickshell
-    wofi
     adwaita-icon-theme
     swaybg
     wl-clipboard

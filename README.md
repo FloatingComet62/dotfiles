@@ -60,7 +60,6 @@ Check ./sync.sh to find where each directory is sourced from
 - nvim using NvChad
 - tmux
 - yazi for file exploring
-- wofi for app menu
 
 ### Hyprland
 Low battery warning notifications
@@ -101,7 +100,7 @@ IF YOU ARE NOT LEFT HANDED, change this in hypr/hyprland/input.conf:input:left_h
 |Win + L|Lock|
 |Win + E|Spawn File Explorer (yazi)|
 |Win + F|Make active window floating|
-|Win + R|**Spawn App Menu** (wofi)|
+|Win + R|**Spawn App Menu**|
 |Win + P|Pseudo ??? (I don't know what this is used for)|
 |Win + J|Toggle window split|
 |Ctrl + Shift + Escape|Spawn Task Manager (btop)|
