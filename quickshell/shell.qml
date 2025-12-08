@@ -59,6 +59,18 @@ PanelWindow {
     Component.onCompleted: running = true
   }
 
+  property int cpu_temperature: 6000
+  Process {
+    id: temperatureProc
+    command: ["sh", "-c", "~/.config/quickshell/cpu_temp.sh"]
+    stdout: SplitParser {
+      onRead: data => {
+        cpu_temperature = parseInt(data.trim()) || 13;
+      }
+    }
+    Component.onCompleted: running = true
+  }
+
   property int brightness: 100
   property int temperature: 6000
   Process {
@@ -122,6 +134,7 @@ PanelWindow {
       volumeProc.running = true
       batteryProc.running = true
       networkProc.running = true
+      temperatureProc.running = true
     }
   }
   Process {
@@ -265,7 +278,7 @@ PanelWindow {
         }
       }
       Text {
-        text: cpuUsage + "K"
+        text: cpu_temperature + "K"
         color: root.orange
         font {
           family: root.fontFamily
