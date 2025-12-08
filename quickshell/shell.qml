@@ -25,30 +25,20 @@ ShellRoot {
   property int fontSize: 18
 
   property bool appLauncherVisible: false
+  property bool calendarVisible: false
 
-  // focus: true
-  // Keys.onPressed: (event) => {
-  //   if (event.key === Qt.Key_R && event.modifiers & Qt.MetaModifier) {
-  //     Quickshell.execDetached(["notify-send", "ok"])
-  //     appLauncherVisible = true;
-  //   }
-  // }
-  // Component.onCompleted: {
-  //   Hyprland.rawSignals = true;
-  // }
-  // Connections {
-  //   target: Hyprland
-  //
-  //   function onEvent(sig) {
-  //     Quickshell.execDetached(["notify-send", "ok"])
-  //     console.log("Raw = ", sig);
-  //   }
-  // }
   GlobalShortcut {
     id: launcherShortcut
     name: "toggleLauncher"
     onPressed: {
       appLauncherVisible = true
+    }
+  }
+  GlobalShortcut {
+    id: calendarShortcut
+    name: "toggleCalendar"
+    onPressed: {
+      calendarVisible = true
     }
   }
 
@@ -193,6 +183,46 @@ ShellRoot {
         
         onRequestClose: {
           shellRoot.appLauncherVisible = false
+        }
+      }
+    }
+  }
+
+  Variants {
+    model: Quickshell.screens
+    
+    PanelWindow {
+      visible: shellRoot.calendarVisible
+      
+      anchors {
+        top: true
+        left: true
+      }
+      
+      margins {
+        top: 5
+        left: Screen.width - 435 - 40
+      }
+      
+      implicitWidth: 435
+      implicitHeight: 370
+      
+      color: "transparent"
+      exclusiveZone: 0
+      
+      WlrLayershell.layer: WlrLayer.Overlay
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+      
+      Behavior on height {
+        NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
+      }
+      
+      Calendar {
+        anchors.fill: parent
+        isVisible: shellRoot.calendarVisible
+        
+        onRequestClose: {
+          shellRoot.calendarVisible = false
         }
       }
     }
