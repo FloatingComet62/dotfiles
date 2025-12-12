@@ -10,13 +10,14 @@
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     quickshell.packages.${pkgs.system}.quickshell
-    adwaita-icon-theme
+    catppuccin-cursors.mochaMauve
     swaybg
     wl-clipboard
     mako
     lm_sensors
     grim
     slurp
+    hyprcursor
     hyprsunset
     playerctl
     libnotify
