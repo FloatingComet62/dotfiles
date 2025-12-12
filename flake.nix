@@ -12,6 +12,15 @@
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+        # to have it up-to-date or simply don't specify the nixpkgs input
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs = {
@@ -43,7 +52,7 @@
       nixosConfigurations.main = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit quickshell inputs username hostname unstable symlinkRoot nvidia llm;
+          inherit quickshell inputs system username hostname unstable symlinkRoot nvidia llm;
         };
 
         modules = [

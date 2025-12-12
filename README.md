@@ -154,5 +154,5 @@ Configure in nixos/apps.nix
 - Wine
 - Libreoffice
 - Dolphin
-- Firefox
+- Zen
 - VLC

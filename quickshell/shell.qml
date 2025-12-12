@@ -99,10 +99,11 @@ ShellRoot {
         color: shellRoot.black
 
         ColumnLayout {
+          Item {}
           IconButton {
-            icon: ""
-            tooltip: "Firefox"
-            onClicked: Quickshell.execDetached(["firefox"])
+            icon: ""
+            tooltip: "Zen"
+            onClicked: Quickshell.execDetached(["zen"])
           }
           IconButton {
             icon: ""

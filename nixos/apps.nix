@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 {
-  # $ nix search wget
+  imports =
+    [
+      ./apps/browser.nix
+    ];
   environment.systemPackages = with pkgs; [
     gimp
     vscode
@@ -16,15 +19,6 @@
     vlc
   ];
 
-  xdg = {
-    mime.enable = true;
-    mime.defaultApplications = {
-      # don't use libreoffice draw for pdfs, use firefox
-      "application/pdf" = [ "firefox.desktop" ];
-    };
-  };
-
-  # for Localsend
   networking.firewall.allowedTCPPorts = [ 53317 8081 ];
   networking.firewall.allowedUDPPorts = [ 53317 8081 ];
 }

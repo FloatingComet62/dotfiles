@@ -67,7 +67,6 @@ set ANDROID_NDK_ROOT /opt/android-ndk
 set ANDROID_HOME /opt/android-sdk
     '';
   };
-  programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
     home-manager
   ];
