@@ -30,13 +30,7 @@
     fortune
     cowsay
     lolcat
-
-    openssl
-    openssl.dev
   ];
-  environment.variables = {
-    OPENSSL_DIR = "${pkgs.openssl.dev}";
-  };
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
