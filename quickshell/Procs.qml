@@ -56,7 +56,7 @@ Scope {
     command: ["sh", "-c", "~/.config/quickshell/scripts/cpu_temp.sh"]
     stdout: SplitParser {
       onRead: data => {
-        cpu_temperature = parseInt(data.trim()) || 13;
+        cpu_temperature = parseInt(data.trim()) || 0;
       }
     }
     Component.onCompleted: running = true
@@ -80,7 +80,7 @@ Scope {
     command: ["sh", "-c", "~/.config/quickshell/scripts/volume.sh"]
     stdout: SplitParser {
       onRead: data => {
-        volume = parseInt(data.trim()) || 13;
+        volume = parseInt(data.trim()) || 0;
       }
     }
     Component.onCompleted: running = true
@@ -91,7 +91,7 @@ Scope {
     command: ["sh", "-c", "~/.config/quickshell/scripts/battery.sh"]
     stdout: SplitParser {
       onRead: data => {
-        battery = parseInt(data.trim()) || 13;
+        battery = parseInt(data.trim()) || 0;
       }
     }
     Component.onCompleted: running = true
