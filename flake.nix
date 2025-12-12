@@ -26,6 +26,7 @@
       username = "aargh";
       hostname = "pegasus";
       nvidia = true;
+      llm = true;
 
       # This is where I have keep the dotfiles folder, replace it accordingly
       symlinkRoot = "/home/${username}/dotfiles";
@@ -42,7 +43,7 @@
       nixosConfigurations.main = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit quickshell inputs username hostname unstable symlinkRoot nvidia;
+          inherit quickshell inputs username hostname unstable symlinkRoot nvidia llm;
         };
 
         modules = [

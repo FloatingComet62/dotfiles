@@ -1,4 +1,4 @@
-{ config, pkgs, username, hostname, nvidia, ... }:
+{ config, pkgs, username, hostname, ... }:
 {
   imports =
     [
@@ -13,9 +13,8 @@
       ./languages
       ./apps.nix
       ./tmux.nix
-    ] ++ (if nvidia then [
-      ./nvidia.nix
-    ] else []);
+      ./opt
+    ];
 
   nix.settings = {
     cores = 6;

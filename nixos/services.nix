@@ -14,10 +14,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-  };
   services.power-profiles-daemon.enable = true;
   services.openssh.enable = true;
   services.flatpak.enable = true;
