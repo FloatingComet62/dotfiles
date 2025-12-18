@@ -61,6 +61,7 @@ set -U fish_user_paths /home/comet/.cargo/bin $fish_user_paths
 set -U fish_user_paths /opt/android-sdk/cmdline-tools/latest/bin $fish_user_paths
 set -U fish_user_paths /opt/android-sdk/platform-tools $fish_user_paths
 set -U fish_user_paths /opt/android-sdk/emulator $fish_user_paths
+set -U fish_user_paths $HOME/.bin $fish_user_paths
 
 set ANDROID_NDK_HOME /opt/android-ndk
 set ANDROID_NDK_ROOT /opt/android-ndk

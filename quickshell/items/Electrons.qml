@@ -12,7 +12,7 @@ RowLayout {
     }
   }
   Text {
-    text: battery
+    text: (batteryCharging ? ("AC/DC(" + battery + ")") : battery)
     color: (battery <= redBatteryPoint) ? shellRoot.red : ((battery <= orangeBatteryPoint) ? shellRoot.orange : shellRoot.green)
     font {
       family: shellRoot.fontFamily

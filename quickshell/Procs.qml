@@ -91,7 +91,9 @@ Scope {
     command: ["sh", "-c", "~/.config/quickshell/scripts/battery.sh"]
     stdout: SplitParser {
       onRead: data => {
-        battery = parseInt(data.trim()) || 0;
+        var parts = data.trim().split(/\s+/)
+        battery = parseInt(parts[0]) || 0;
+        batteryCharging = parseInt(parts[1]) || false;
       }
     }
     Component.onCompleted: running = true

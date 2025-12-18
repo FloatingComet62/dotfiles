@@ -56,6 +56,7 @@ ShellRoot {
       property int temperature: 6000
       property int volume: 12
       property int battery: 12
+      property bool batteryCharging: false
       property string wifiName: "Offline"
 
       Procs {}
