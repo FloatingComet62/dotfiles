@@ -1,18 +1,31 @@
 { config, pkgs, ... }:
 {
-  security.rtkit.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings.General.Enable = "Source,Sink,Media.Socket";
+    settings.General.Experimental = true;
+  };
+  systemd.user.services.mpris-proxy = {
+      description = "Mpris proxy";
+      after = [ "network.target" "sound.target" ];
+      wantedBy = [ "default.target" ];
+      serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+  };
 
+  security.rtkit.enable = true;
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
+  services.blueman.enable = true;
   services.printing.enable = true;
   services.pulseaudio.enable = false;
-  services.pipewire = {
+    services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
   services.power-profiles-daemon.enable = true;
   services.openssh.enable = true;
