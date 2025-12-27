@@ -11,6 +11,8 @@
       wantedBy = [ "default.target" ];
       serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
+  systemd.oomd.enable = true;
+  zramSwap.enable = true;
 
   security.rtkit.enable = true;
   services.xserver.xkb = {
