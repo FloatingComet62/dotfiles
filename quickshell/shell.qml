@@ -26,6 +26,8 @@ ShellRoot {
 
   property bool appLauncherVisible: false
   property bool calendarVisible: false
+  property bool batteryModeConfig: false
+  property bool blink: false
 
   GlobalShortcut {
     id: launcherShortcut
@@ -225,6 +227,101 @@ ShellRoot {
         
         onRequestClose: {
           shellRoot.calendarVisible = false
+        }
+      }
+    }
+  }
+
+  Variants {
+    model: Quickshell.screens
+    
+    PanelWindow {
+      visible: shellRoot.batteryModeConfig
+      
+      anchors {
+        top: true
+        left: true
+      }
+      
+      margins {
+        top: 0
+        left: Screen.width / 2 - 100
+      }
+      
+      implicitWidth: 200
+      implicitHeight: 50
+      
+      color: "transparent"
+      exclusiveZone: 0
+      
+      WlrLayershell.layer: WlrLayer.Overlay
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+      
+      Behavior on height {
+        NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
+      }
+
+      BatteryModeConfig {
+        onRequestClose: {
+          shellRoot.batteryModeConfig = false
+        }
+      }
+    }
+  }
+
+  Timer {
+    interval: 1000 * 60 * 30
+    running: true
+    repeat: true
+    onTriggered: {
+      shellRoot.blink = true;
+    }
+  }
+
+  Variants {
+    model: Quickshell.screens
+    
+    PanelWindow {
+      visible: shellRoot.blink
+      
+      margins {
+        top: 0
+        left: 0
+      }
+      
+      implicitWidth: 800
+      implicitHeight: 400
+      
+      color: "transparent"
+      exclusiveZone: 0
+      
+      WlrLayershell.layer: WlrLayer.Overlay
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+      
+      Behavior on height {
+        NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
+      }
+
+      Rectangle {
+        id: batteryModeConfigRect
+        
+        width: 800
+        height: 400
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        color: shellRoot.black
+        antialiasing: true
+        radius: 10
+        focus: true
+        Keys.onEscapePressed: shellRoot.blink = false;
+
+        Text {
+          anchors.centerIn: parent
+          text: "BLINK"
+          font.family: shellRoot.fontFamily
+          font.weight: 800
+          font.pixelSize: 200
+          color: shellRoot.white
         }
       }
     }

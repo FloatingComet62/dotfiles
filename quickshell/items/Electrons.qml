@@ -20,4 +20,8 @@ RowLayout {
       bold: true
     }
   }
+  MouseArea {
+    anchors.fill: parent
+    onClicked: shellRoot.batteryModeConfig = !shellRoot.batteryModeConfig
+  }
 }

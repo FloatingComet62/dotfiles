@@ -30,11 +30,6 @@
   services.power-profiles-daemon.enable = true;
   services.openssh.enable = true;
   services.flatpak.enable = true;
-  services.mongodb = {
-    enable = true;
-    bind_ip = "127.0.0.1";
-    package = pkgs.mongodb;
-  };
   services.kanata = {
     enable = true;
     keyboards = {

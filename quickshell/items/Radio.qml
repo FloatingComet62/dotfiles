@@ -19,10 +19,9 @@ RowLayout {
       pixelSize: shellRoot.fontSize
       bold: true
     }
-
-    MouseArea {
-      anchors.fill: parent
-      onClicked: networkManagerProc.running = true
-    }
+  }
+  MouseArea {
+    anchors.fill: parent
+    onClicked: networkManagerProc.running = true
   }
 }
