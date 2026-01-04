@@ -1,9 +1,6 @@
-{ nvidia, llm, ... }:
+{ opt, ... }:
 {
   imports =
-    (if nvidia then [
-      ./nvidia.nix
-    ] else []) ++ (if llm then [
-      ./llm.nix
-    ] else []);
+    (if opt.nvidia then [ ./nvidia.nix ] else []) ++
+    (if opt.llm then [ ./llm.nix ] else []);
 }

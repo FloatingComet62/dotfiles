@@ -15,8 +15,8 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
-        # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-        # to have it up-to-date or simply don't specify the nixpkgs input
+        # IMPORTANT: we're using "libgbm" and is only available in unstable so
+        # ensure to have it up-to-date or simply don't specify the nixpkgs input
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
@@ -34,16 +34,26 @@
       system = "x86_64-linux";
       username = "aargh";
       hostname = "pegasus";
-      nvidia = true;
-      llm = true;
+      opt = {
+        nvidia = true;
+        llm = true;
+      };
+      languages = {
+        c = true;
+        asm = true;
+        lua = true;
+        python = true;
+
+        go = false;
+        beam = false;
+        javascript = false;
+        rust = false;
+        zig = false;
+      };
 
       # This is where I have keep the dotfiles folder, replace it accordingly
       symlinkRoot = "/home/${username}/dotfiles";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
       unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
@@ -52,7 +62,8 @@
       nixosConfigurations.main = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit quickshell inputs system username hostname unstable symlinkRoot nvidia llm;
+          inherit quickshell inputs system
+            username hostname unstable symlinkRoot opt languages;
         };
 
         modules = [

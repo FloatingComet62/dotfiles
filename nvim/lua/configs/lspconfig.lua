@@ -5,9 +5,6 @@ vim.lsp.enable(servers)
 
 local lspconfig = require("lspconfig")
 
--- Rust
-lspconfig.rust_analyzer.setup{}
-
 -- Zig
 lspconfig.zls.setup{
   cmd = { "zls" },
