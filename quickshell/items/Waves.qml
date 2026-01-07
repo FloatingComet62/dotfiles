@@ -13,7 +13,7 @@ RowLayout {
   }
   Text {
     text: volume
-    color: shellRoot.green
+    color: volume_muted ? shellRoot.red : shellRoot.green
     font {
       family: shellRoot.fontFamily
       pixelSize: shellRoot.fontSize

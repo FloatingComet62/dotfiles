@@ -57,6 +57,7 @@ ShellRoot {
       property int brightness: 100
       property int temperature: 6000
       property int volume: 12
+      property bool volume_muted: false
       property int battery: 12
       property bool batteryCharging: false
       property string wifiName: "Offline"

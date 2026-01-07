@@ -56,7 +56,7 @@ Scope {
     command: ["sh", "-c", "~/.config/quickshell/scripts/cpu_temp.sh"]
     stdout: SplitParser {
       onRead: data => {
-        cpu_temperature = parseInt(data.trim()) || 0;
+        cpu_temperature = parseInt(data.trim()) || 0
       }
     }
     Component.onCompleted: running = true
@@ -77,10 +77,16 @@ Scope {
 
   Process {
     id: volumeProc
-    command: ["sh", "-c", "~/.config/quickshell/scripts/volume.sh"]
+    command: ["sh", "-c", "wpctl get-volume @DEFAULT_AUDIO_SINK@"]
     stdout: SplitParser {
       onRead: data => {
-        volume = parseInt(data.trim()) || 0;
+        var parts = data.trim().split(/\s+/)
+        if (parts.length == 3) {
+          volume_muted = true;
+        } else {
+          volume_muted = false;
+        }
+        volume = (parseFloat(parts[1].trim()) || 0) * 100
       }
     }
     Component.onCompleted: running = true
@@ -92,8 +98,8 @@ Scope {
     stdout: SplitParser {
       onRead: data => {
         var parts = data.trim().split(/\s+/)
-        battery = parseInt(parts[0]) || 0;
-        batteryCharging = parseInt(parts[1]) || false;
+        battery = parseInt(parts[0]) || 0
+        batteryCharging = parseInt(parts[1]) || false
       }
     }
     Component.onCompleted: running = true
