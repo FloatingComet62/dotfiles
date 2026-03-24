@@ -35,6 +35,7 @@
       };
     };
     efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot/efi";
     systemd-boot.enable = false;
   };
 
