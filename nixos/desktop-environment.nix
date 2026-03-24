@@ -19,6 +19,7 @@
     slurp
     hyprcursor
     hyprsunset
+    hyprpicker
     playerctl
     libnotify
   ];
