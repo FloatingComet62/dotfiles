@@ -13,23 +13,23 @@ Rectangle {
   
   property bool isVisible: false
   property int hoverIndex: 0
-  property bool cleared: true
+  property var apps: []
   
   signal requestClose()
   
   focus: true
   
   Keys.onEscapePressed: requestClose()
-  
+
   Keys.onUpPressed: {
-    hoverIndex--
-    if (hoverIndex < 0) hoverIndex += appListModel.count
-    listView.positionViewAtIndex(hoverIndex, ListView.Contain)
+    hoverIndex--;
+    if (hoverIndex < 0) hoverIndex += appListModel.count;
+    listView.positionViewAtIndex(hoverIndex, ListView.Contain);
   }
   
   Keys.onDownPressed: {
-    hoverIndex = (hoverIndex + 1) % appListModel.count
-    listView.positionViewAtIndex(hoverIndex, ListView.Contain)
+    hoverIndex = (hoverIndex + 1) % appListModel.count;
+    listView.positionViewAtIndex(hoverIndex, ListView.Contain);
   }
   
   Keys.onReturnPressed: {
@@ -46,9 +46,9 @@ Rectangle {
   
   onIsVisibleChanged: {
     if (!isVisible) return;
-    hoverIndex = -1
-    appLauncher.forceActiveFocus()
-    loadApps()
+    hoverIndex = 0;
+    appLauncher.forceActiveFocus();
+    searchInput.forceActiveFocus();
   }
   
   Process {
@@ -58,40 +58,45 @@ Rectangle {
     
     stdout: SplitParser {
       onRead: data => {
-        if (!cleared) {
-          appListModel.clear()
-          cleared = true;
-        }
-
-        const lines = data.split('\n')
+        const lines = data.split('\n');
         for (const line of lines) {
-          if (line.trim().length === 0) continue
+          if (line.trim().length === 0) continue;
           
-          const parts = line.split('|')
+          const parts = line.split('|');
           if (parts.length < 4) continue;
-          appListModel.append({
+          apps.push({
             appName: parts[0],
             appDescription: parts[1],
             appIcon: parts[2],
             appCommand: parts[3]
-          })
+          });
         }
+
+        applySearch("");
       }
     }
     
     onRunningChanged: {
       if (running) return;
-      appLoader.running = false
+      appLoader.running = false;
     }
   }
   
   function loadApps() {
-    cleared = false;
-    appLoader.running = true
+    appLoader.running = true;
+  }
+
+  function applySearch(searchString) {
+    appListModel.clear();
+    for (const app of apps) {
+      if (app.appName.toLowerCase().includes(searchString.toLowerCase())) {
+        appListModel.append(app);
+      }
+    }
   }
   
   Component.onCompleted: {
-    loadApps()
+    loadApps();
   }
   
   Column {
@@ -139,11 +144,35 @@ Rectangle {
         }
       }
     }
+
+    Rectangle {
+      width: parent.width
+      height: 36
+      color: shellRoot.black
+      border.color: shellRoot.green
+      border.width: 1
+
+      TextInput {
+        id: searchInput
+        width: parent.width
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
+        anchors.verticalCenter: parent.verticalCenter
+        color: "white"
+        font.pixelSize: 14
+        onTextEdited: {
+          applySearch(searchInput.text);
+          hoverIndex = 0;
+        }
+      }
+    }
     
     ListView {
       id: listView
       width: parent.width
-      height: parent.height - 44
+      height: parent.height - 88
       spacing: 8
       clip: true
       
@@ -155,8 +184,8 @@ Rectangle {
         width: listView.width
         height: 30
         color: {
-          if (appLauncher.hoverIndex === index) return shellRoot.lightgray
-          return shellRoot.gray
+          if (appLauncher.hoverIndex === index) return shellRoot.lightgray;
+          return shellRoot.gray;
         }
         
         Row {
@@ -182,17 +211,17 @@ Rectangle {
         }
         
         MouseArea {
-          id:ouseArea
+          id: mouseArea
           anchors.fill: parent
           hoverEnabled: true
           cursorShape: Qt.PointingHandCursor
           
           onEntered: {
-            appLauncher.hoverIndex = index
+            appLauncher.hoverIndex = index;
           }
           
           onClicked: {
-            launchApp(model.appCommand)
+            launchApp(model.appCommand);
           }
         }
       }

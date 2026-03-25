@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     man-pages-posix
     fastfetch

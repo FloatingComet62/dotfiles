@@ -44,7 +44,7 @@
         lua = true;
         python = true;
 
-        go = false;
+        go = true;
         beam = false;
         javascript = false;
         rust = false;
