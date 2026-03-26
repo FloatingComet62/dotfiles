@@ -28,6 +28,7 @@
     fzf
     termusic
     lazygit
+    lazydocker
     fortune
     cowsay
     lolcat

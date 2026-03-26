@@ -44,11 +44,11 @@ if test -f ~/.cache/ags/user/generated/terminal/sequences.txt
     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 end
 
-alias pamcan=pacman
 alias py=python
 alias tmux="tmux -u"
 alias snvim="sudo -E -s nvim"
 alias ls="eza"
+alias scrcpy="scrcpy --render-driver=opengl"
 alias wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat"
 function mkcd
     mkdir -p $argv[1]

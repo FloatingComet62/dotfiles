@@ -11,12 +11,11 @@
     localsend
     bitwarden-desktop
     obsidian
-    # jetbrains.pycharm-professional
-    # jetbrains.clion
     libreoffice-qt6-fresh
     kdePackages.dolphin
     wineWowPackages.stable
     vlc
+    cloudflare-warp
   ];
 
   networking.firewall.allowedTCPPorts = [ 53317 8081 ];

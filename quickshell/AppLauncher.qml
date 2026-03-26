@@ -35,12 +35,14 @@ Rectangle {
   Keys.onReturnPressed: {
     if (hoverIndex >= 0 && hoverIndex < appListModel.count) {
       launchApp(appListModel.get(hoverIndex).appCommand)
+      console.log(appListModel.get(hoverIndex).appCommand)
     }
   }
   
   Keys.onEnterPressed: {
     if (hoverIndex >= 0 && hoverIndex < appListModel.count) {
       launchApp(appListModel.get(hoverIndex).appCommand)
+      console.log(appListModel.get(hoverIndex).appCommand)
     }
   }
   
@@ -64,6 +66,16 @@ Rectangle {
           
           const parts = line.split('|');
           if (parts.length < 4) continue;
+
+          if (parts[0].toLowerCase().includes("zen")) {
+            apps.push({
+              appName: "Zen browser",
+              appDescription: "it's zen",
+              appIcon: "nigga",
+              appCommand: "zen"
+            });
+          }
+
           apps.push({
             appName: parts[0],
             appDescription: parts[1],
