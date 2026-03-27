@@ -6,3 +6,4 @@ local unmap = vim.keymap.del
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 map({ "n", "v" }, "<C-f>", ":%s/")
+map("n", "<leader>n", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file tree" })
