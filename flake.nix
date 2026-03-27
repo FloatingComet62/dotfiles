@@ -50,6 +50,10 @@
         rust = false;
         zig = false;
       };
+      terminalworkspace = {
+        tmux = false;
+        zellij = true;
+      };
 
       # This is where I have keep the dotfiles folder, replace it accordingly
       symlinkRoot = "/home/${username}/dotfiles";
@@ -63,7 +67,8 @@
         inherit system;
         specialArgs = {
           inherit quickshell inputs system
-            username hostname unstable symlinkRoot opt languages;
+            username hostname unstable symlinkRoot
+            opt languages terminalworkspace;
         };
 
         modules = [

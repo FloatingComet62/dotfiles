@@ -10,9 +10,9 @@
       ./desktop-environment.nix
       ./environment.nix
       ./nvim.nix
-      ./languages
       ./apps.nix
-      ./tmux.nix
+      ./languages
+      ./terminal_workspace
       ./opt
     ];
 

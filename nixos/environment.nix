@@ -3,6 +3,16 @@
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     man-pages-posix
+    uutils-coreutils-noprefix
+    fd
+    bat
+    eza
+    xh
+    hyperfine
+    delta
+    tokei
+    wiki-tui
+
     fastfetch
     pipes
     vim
@@ -24,7 +34,6 @@
 
     zoxide
     starship
-    eza
     fzf
     termusic
     lazygit

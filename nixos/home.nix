@@ -20,16 +20,16 @@ function fish_prompt -d "Write out the prompt"
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
-if status is-interactive
-    set fish_greeting
-
-    if not set -q TMUX
-        tmux new-session -d -s "main" -c "~/dev"
-        if not set -q VSCODE_PID
-            tmux -u a
-        end
-    end
-end
+# if status is-interactive
+#     set fish_greeting
+#
+#     if not set -q TMUX
+#         tmux new-session -d -s "main" -c "~/dev"
+#         if not set -q VSCODE_PID
+#             tmux -u a
+#         end
+#     end
+# end
 
 function tsnode
     set filename (basename $argv[1] .ts)
@@ -48,6 +48,9 @@ alias py=python
 alias tmux="tmux -u"
 alias snvim="sudo -E -s nvim"
 alias ls="eza"
+alias cat="bat"
+alias find="fd"
+alias cloc="tokei"
 alias scrcpy="scrcpy --render-driver=opengl"
 alias wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat"
 function mkcd
@@ -68,7 +71,11 @@ set ANDROID_NDK_ROOT /opt/android-ndk
 set ANDROID_HOME /opt/android-sdk
     '';
   };
+  # programs.nushell = {
+  #   enable = true;
+  # };
   environment.systemPackages = with pkgs; [
+    nushell
     home-manager
   ];
 }
