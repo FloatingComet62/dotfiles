@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 echo "Inserting files..."
 sudo cp -r Wallpapers ~/Pictures
 
