@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, terminalworkspace, ... }:
 {
   users.users.${username} = {
     isNormalUser = true;
@@ -19,18 +19,33 @@ function fish_prompt -d "Write out the prompt"
     printf '%s@%s %s%s%s > ' $USER $hostname \
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
+'' + (if terminalworkspace.tmux then ''
+if status is-interactive
+    set fish_greeting
 
-# if status is-interactive
-#     set fish_greeting
-#
-#     if not set -q TMUX
-#         tmux new-session -d -s "main" -c "~/dev"
-#         if not set -q VSCODE_PID
-#             tmux -u a
-#         end
-#     end
-# end
+    if not set -q TMUX
+        tmux new-session -d -s "main" -c "~/dev"
+        if not set -q VSCODE_PID
+            tmux -u a
+        end
+    end
+end
+'' else '''') + (if terminalworkspace.zellij then ''
+if status is-interactive
+    set fish_greeting
 
+    if status is-interactive
+    set fish_greeting
+
+    if not set -q ZELLIJ
+        if not set -q VSCODE_PID
+            cd ~/dev
+            zellij attach --create main
+        end
+    end
+end
+end
+'' else '''') + ''
 function tsnode
     set filename (basename $argv[1] .ts)
     tsc $filename.ts
@@ -53,6 +68,7 @@ alias find="fd"
 alias cloc="tokei"
 alias scrcpy="scrcpy --render-driver=opengl"
 alias wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat"
+alias search="rg --color=always --line-number --no-heading \"\" | fzf --ansi --phony --query \"\" --bind \"change:reload(rg --color=always --line-number --no-heading {q} || true)\""
 function mkcd
     mkdir -p $argv[1]
     cd $argv[1]
@@ -69,11 +85,8 @@ set -U fish_user_paths $HOME/.bin $fish_user_paths
 set ANDROID_NDK_HOME /opt/android-ndk
 set ANDROID_NDK_ROOT /opt/android-ndk
 set ANDROID_HOME /opt/android-sdk
-    '';
+'';
   };
-  # programs.nushell = {
-  #   enable = true;
-  # };
   environment.systemPackages = with pkgs; [
     nushell
     home-manager

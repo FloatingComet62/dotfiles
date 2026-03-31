@@ -5,8 +5,12 @@
     modesetting.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     nvidiaSettings = true;
-    open = true;
+    open = false;
   };
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    nvidia-vaapi-driver
+  ];
   boot.kernelParams = [ "acpi_backlight=video" ];
   boot.initrd.kernelModules = [ "nvidia" "hp_wmi" ];
   services.xserver.videoDrivers = [ "nvidia" ];

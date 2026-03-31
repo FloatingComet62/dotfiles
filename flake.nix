@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,8 +51,8 @@
         zig = false;
       };
       terminalworkspace = {
-        tmux = false;
-        zellij = true;
+        tmux = true;
+        zellij = false;
       };
 
       # This is where I have keep the dotfiles folder, replace it accordingly

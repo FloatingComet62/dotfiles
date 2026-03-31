@@ -69,7 +69,7 @@ ShellRoot {
         Component.onCompleted: running = false
       }
 
-      anchors.top: true
+      anchors.bottom: true
       anchors.left: true
       anchors.right: true
       implicitHeight: 32
@@ -92,65 +92,6 @@ ShellRoot {
         Latch {}
         Spin {}
       }
-
-      // PanelWindow {
-      //   id: apps
-      //
-      //   anchors.top: true
-      //   anchors.right: true
-      //   anchors.bottom: true
-      //   implicitWidth: 32
-      //   color: shellRoot.black
-      //
-      //   ColumnLayout {
-      //     Item {}
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "Zen"
-      //       onClicked: Quickshell.execDetached(["zen"])
-      //     }
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "Dolphin"
-      //       onClicked: Quickshell.execDetached(["dolphin"])
-      //     }
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "Vscode"
-      //       onClicked: Quickshell.execDetached(["code"])
-      //     }
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "Localsend"
-      //       onClicked: Quickshell.execDetached(["localsend_app"])
-      //     }
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "Bitwarden"
-      //       onClicked: Quickshell.execDetached(["bitwarden"])
-      //     }
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "GIMP"
-      //       onClicked: Quickshell.execDetached(["gimp"])
-      //     }
-      //     IconButton {
-      //       icon: "󰠮"
-      //       tooltip: "Obsidian"
-      //       onClicked: Quickshell.execDetached(["obsidian"])
-      //     }
-      //     IconButton {
-      //       icon: ""
-      //       tooltip: "Discord"
-      //       onClicked: Quickshell.execDetached(["discord"])
-      //     }
-      //     IconButton {
-      //       icon: "󰕼"
-      //       tooltip: "VLC"
-      //       onClicked: Quickshell.execDetached(["vlc"])
-      //     }
-      //   }
-      // }
     }
   }
   Variants {
@@ -165,7 +106,7 @@ ShellRoot {
       }
       
       margins {
-        top: Screen.height/2 - 300
+        top: 5
         left: Screen.width/2 - 200
       }
       
@@ -206,7 +147,7 @@ ShellRoot {
       
       margins {
         top: 5
-        left: Screen.width - 435 - 40
+        left: Screen.width - 435 - 5
       }
       
       implicitWidth: 435
