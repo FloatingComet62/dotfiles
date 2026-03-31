@@ -1,5 +1,22 @@
 { config, pkgs, ... }:
 {
+  environment.variables = {
+    EDITOR = "nvim";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_CACHE_HOME = "$HOME/.cache";
+    PATH = [
+      "$HOME/.bin"
+      "$HOME/.cargo/bin"
+      "/opt/android-sdk/cmdline-tools/latest/bin"
+      "/opt/android-sdk/platform-tools"
+      "/opt/android-sdk/emulator"
+    ];
+    PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig $HOME/.local/lib64/pkgconfig";
+    LD_LIBRARY_PATH="$HOME/.local/lib $HOME/.local/lib64";
+    ANDROID_NDK_HOME="/opt/android-ndk";
+    ANDROID_NDK_ROOT="/opt/android-ndk";
+    ANDROID_HOME="/opt/android-sdk";
+  };
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     man-pages-posix

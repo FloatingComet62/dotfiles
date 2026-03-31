@@ -12,8 +12,8 @@ Rectangle {
   Layout.fillHeight: true
   color: shellRoot.black
   antialiasing: true
-  bottomLeftRadius: 10
-  bottomRightRadius: 10
+  topLeftRadius: 10
+  topRightRadius: 10
   property int current: 1
 
   Timer {

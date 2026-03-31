@@ -181,7 +181,7 @@ ShellRoot {
       visible: shellRoot.batteryModeConfig
       
       anchors {
-        top: true
+        bottom: true
         left: true
       }
       
