@@ -46,36 +46,29 @@ if status is-interactive
 end
 end
 '' else '''') + ''
-function tsnode
-    set filename (basename $argv[1] .ts)
-    tsc $filename.ts
-    node $filename.js
-    rm $filename.js
-end
-
 zoxide init --cmd cd fish | source
 starship init fish | source
 if test -f ~/.cache/ags/user/generated/terminal/sequences.txt
     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 end
 
-alias py=python
-alias tmux="tmux -u"
-alias snvim="sudo -E -s nvim"
-alias ls="eza"
-alias l="eza -bghHliS"
-alias tree="eza -TL 2"
-alias cat="bat"
-alias find="fd"
-alias cloc="tokei"
-alias scrcpy="scrcpy --render-driver=opengl"
-alias wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat"
-alias search="rg --color=always --line-number --no-heading \"\" | fzf --ansi --phony --query \"\" --bind \"change:reload(rg --color=always --line-number --no-heading {q} || true)\""
 function mkcd
     mkdir -p $argv[1]
     cd $argv[1]
 end
 '';
+    shellAliases = {
+      py="python";
+      tmux="tmux -u";
+      snvim="sudo -E -s nvim";
+      ls="eza -hli";
+      cat="bat";
+      find="fd";
+      cloc="tokei";
+      scrcpy="scrcpy --render-driver=opengl";
+      wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat";
+      search="rg --color=always --line-number --no-heading \"\" | fzf --ansi --phony --query \"\" --bind \"change:reload(rg --color=always --line-number --no-heading {q} || true)\"";
+    };
   };
   environment.systemPackages = with pkgs; [
     nushell
