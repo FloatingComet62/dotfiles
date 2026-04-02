@@ -14,29 +14,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/aadeb47f-49f3-4052-b061-6d02fd0165cb";
+    { device = "/dev/disk/by-uuid/7efe503a-9f35-4c4c-b93b-1e88c300751b";
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/111C-A2C4";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/8110-364A";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  fileSystems."/var/lib/docker/overlay2/4644c4a5a2b1c4a0cb4542e69c9532a324f9dba60040695760d0222a1cb161e8/merged" =
-    { device = "overlay";
-      fsType = "overlay";
-    };
-
-  fileSystems."/var/lib/docker/overlay2/9cbb4669695d642dd03b76ef59374502793490f8c64404a1dc1342641742f789/merged" =
-    { device = "overlay";
-      fsType = "overlay";
-    };
-
-  fileSystems."/var/lib/docker/overlay2/b6ee16857d614f1210c4bd29c841ddd901fd7ccdc6b0370045311774611eed47/merged" =
-    { device = "overlay";
-      fsType = "overlay";
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices = [ ];

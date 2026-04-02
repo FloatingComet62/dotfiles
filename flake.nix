@@ -54,6 +54,11 @@
         tmux = true;
         zellij = false;
       };
+      games = {
+        enable = true;
+        minecraft = true;
+      };
+      dualbootedwithwindows = false;
 
       # This is where I have keep the dotfiles folder, replace it accordingly
       symlinkRoot = "/home/${username}/dotfiles";
@@ -68,7 +73,8 @@
         specialArgs = {
           inherit quickshell inputs system
             username hostname unstable symlinkRoot
-            opt languages terminalworkspace;
+            opt languages terminalworkspace
+            dualbootedwithwindows games;
         };
 
         modules = [

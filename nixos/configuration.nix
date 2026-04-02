@@ -1,4 +1,4 @@
-{ config, pkgs, username, hostname, ... }:
+{ config, pkgs, username, hostname, games, ... }:
 {
   imports =
     [
@@ -14,7 +14,7 @@
       ./languages
       ./terminal_workspace
       ./opt
-    ];
+    ] ++ (if games.enable then [ ./games ] else []);
 
   nix.settings = {
     cores = 6;

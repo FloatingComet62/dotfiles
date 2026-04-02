@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dualbootedwithwindows, ... }:
 {
   boot.loader = {
     grub = {
@@ -7,13 +7,13 @@
       devices = ["nodev"];
       useOSProber = true;
       extraEntries = ''
-      GRUB_SAVEDEFAULT=true
+      GRUB_SAVEDEFAULT=true'' + (if dualbootedwithwindows then ''
       menuentry "Windows" {
         insmod part_gpt
         insmod fat
         set root=(hd0,gpt1)
         chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-      }
+      }'' else '''') + ''
       menuentry "Reboot" {
         reboot
       }
@@ -35,7 +35,7 @@
       };
     };
     efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi";
+    efi.efiSysMountPoint = "/boot";
     systemd-boot.enable = false;
   };
 
