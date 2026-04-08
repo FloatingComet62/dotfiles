@@ -62,3 +62,16 @@ lspconfig.gopls.setup {
   cmd = { "gopls" },
   filetype = { "go" }
 }
+
+-- Dart / Flutter
+lspconfig.dartls.setup({
+  cmd = { "dart", "language-server", "--protocol=lsp" },
+  filetypes = { "dart" },
+  root_dir = lspconfig.util.root_pattern("pubspec.yaml"),
+  settings = {
+    dart = {
+      completeFunctionCalls = true,
+      showTodos = true,
+    },
+  },
+})

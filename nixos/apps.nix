@@ -15,7 +15,6 @@
     kdePackages.dolphin
     wineWowPackages.stable
     vlc
-    cloudflare-warp
   ];
 
   networking.firewall.allowedTCPPorts = [ 53317 8081 ];

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
   hardware.bluetooth = {
     enable = true;
@@ -32,6 +32,20 @@
   services.cloudflare-warp.enable = true;
   services.openssh.enable = true;
   services.flatpak.enable = true;
+  services.postgresql = {
+    enable = true;
+    ensureUsers = [
+      {
+        name = username;
+        ensureDBOwnership = true;
+      }
+    ];
+    ensureDatabases = [ username ];
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+    '';
+  };
   services.kanata = {
     enable = true;
     keyboards = {

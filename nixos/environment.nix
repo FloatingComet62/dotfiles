@@ -7,15 +7,15 @@
     PATH = [
       "$HOME/.bin"
       "$HOME/.cargo/bin"
-      "/opt/android-sdk/cmdline-tools/latest/bin"
-      "/opt/android-sdk/platform-tools"
-      "/opt/android-sdk/emulator"
+      "$HOME/.android-sdk/cmdline-tools/latest/bin"
+      "$HOME/.android-sdk/platform-tools"
+      "$HOME/.android-sdk/emulator"
     ];
     PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig $HOME/.local/lib64/pkgconfig";
     LD_LIBRARY_PATH="$HOME/.local/lib $HOME/.local/lib64";
-    ANDROID_NDK_HOME="/opt/android-ndk";
-    ANDROID_NDK_ROOT="/opt/android-ndk";
-    ANDROID_HOME="/opt/android-sdk";
+    ANDROID_NDK_HOME="$HOME/.android-ndk";
+    ANDROID_NDK_ROOT="$HOME/.android-ndk";
+    ANDROID_HOME="$HOME/.android-sdk";
   };
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
