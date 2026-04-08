@@ -5,7 +5,7 @@
 </h1>
 <h4 align="center">
   A configuration for NixOS + Hyprland<br>
-  Minimalistic setup for F1 fans and programmers
+  An opinionated setup for F1 fans and programmers
 </h4>
 
 <p align="center">
@@ -20,9 +20,6 @@
 ## Wallpapers
 
 ![hamilton_laying_on_merc](./Wallpapers/2024%20Abu%20Dhabi%20GP%20-%20Lewis%20Hamilton.png)
-![george_brazil](./Wallpapers/2024%20São%20Paulo%20GP%20-%20George%20Russell%202.png)
-![max_brazil](./Wallpapers/2024%20São%20Paulo%20GP%20-%20Max%20Verstappen%206.png)
-![max_preseason](./Wallpapers/2025%20Pre-Season%20Testing%20-%20Max%20Verstappen%204.jpg)
 ![mandrelbrot_full](./Wallpapers/mandelbrot_full_rosewater.png)
 And more in Wallpapers/
 
@@ -156,3 +153,8 @@ Configure in nixos/apps.nix
 - Dolphin
 - Zen
 - VLC
+
+### Games
+Configure in nixos/games
+- Minecraft (Prism Launcher)
+- Steam (Comes installed with the Assetto Corsa compatible Proton version)
