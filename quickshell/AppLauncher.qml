@@ -67,15 +67,6 @@ Rectangle {
           const parts = line.split('|');
           if (parts.length < 4) continue;
 
-          if (parts[0].toLowerCase().includes("zen")) {
-            apps.push({
-              appName: "Zen browser",
-              appDescription: "it's zen",
-              appIcon: "nigga",
-              appCommand: "zen"
-            });
-          }
-
           apps.push({
             appName: parts[0],
             appDescription: parts[1],

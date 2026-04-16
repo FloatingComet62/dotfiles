@@ -10,6 +10,7 @@
     discord
     localsend
     bitwarden-desktop
+    parted
     obsidian
     libreoffice-qt6-fresh
     kdePackages.dolphin

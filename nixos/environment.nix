@@ -37,7 +37,6 @@
     btop
     yazi
     scrcpy
-    cloc
     wf-recorder
     cava
 
@@ -48,6 +47,7 @@
     inetutils
     android-tools
     sqlite
+    bc
 
     zoxide
     starship
@@ -59,8 +59,12 @@
     cowsay
     lolcat
     just
+    jq
+
+    termshark
   ];
   fonts.packages = with pkgs; [
+    dejavu_fonts
     nerd-fonts.jetbrains-mono
   ];
 }

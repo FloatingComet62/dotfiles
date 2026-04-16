@@ -4,10 +4,7 @@
     inputs.zen-browser.packages."${system}".default
   ];
   xdg.mime = let
-    value = let
-      zen-browser = inputs.zen-browser.packages.${system}.default;
-    in
-      zen-browser.meta.desktopFileName;
+    value = "zen-browser.desktop";
 
     associations = builtins.listToAttrs (map (name: {
         inherit name value;

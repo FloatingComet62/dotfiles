@@ -18,6 +18,13 @@ Rectangle {
     monthOffset = 0;
     requestClose()
   }
+  Keys.onPressed: (event) => {
+    if (event.key == Qt.Key_Comma) {
+      monthOffset--;
+    } else if (event.key == Qt.Key_Period) {
+      monthOffset++;
+    }
+  }
   
   Column {
     anchors.fill: parent

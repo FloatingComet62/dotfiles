@@ -36,7 +36,7 @@
       hostname = "pegasus";
       opt = {
         nvidia = true;
-        llm = false;
+        llm = true;
       };
       languages = {
         c = true;
