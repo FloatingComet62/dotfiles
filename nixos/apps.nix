@@ -5,6 +5,7 @@
       ./apps/browser.nix
     ];
   environment.systemPackages = with pkgs; [
+    google-chrome
     gimp
     vscode
     discord
@@ -18,6 +19,24 @@
     vlc
   ];
 
-  networking.firewall.allowedTCPPorts = [ 53317 8081 ];
-  networking.firewall.allowedUDPPorts = [ 53317 8081 ];
+  programs.obs-studio = {
+    enable = true;
+
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
+
+  networking.firewall.allowedTCPPorts = [ 53317 8081 4173 ];
+  networking.firewall.allowedUDPPorts = [ 53317 8081 4173 ];
 }

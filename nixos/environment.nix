@@ -46,6 +46,7 @@
     nmap
     inetutils
     android-tools
+    opencode
     sqlite
     bc
 
@@ -59,6 +60,7 @@
     cowsay
     lolcat
     just
+    process-compose
     jq
 
     termshark

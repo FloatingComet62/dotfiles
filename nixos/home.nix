@@ -56,6 +56,21 @@ function mkcd
     mkdir -p $argv[1]
     cd $argv[1]
 end
+
+if not set -q SSH_AUTH_SOCK
+    set agents /tmp/ssh-*/agent.*
+    if test (count $agents) -gt 0
+        set -x SSH_AUTH_SOCK $agents[1]
+    end
+end
+
+if not set -q SSH_AUTH_SOCK
+    ssh-agent -c | source
+end
+
+function run_sshagent
+  ssh-add ~/.ssh/id_ed25519
+end
 '';
     shellAliases = {
       py="python";

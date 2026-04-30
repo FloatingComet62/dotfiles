@@ -195,7 +195,7 @@ ShellRoot {
       
       color: "transparent"
       exclusiveZone: 0
-      
+
       WlrLayershell.layer: WlrLayer.Overlay
       WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
       
@@ -245,7 +245,7 @@ ShellRoot {
       }
 
       Rectangle {
-        id: batteryModeConfigRect
+        id: blinkRect
         
         width: 800
         height: 400
