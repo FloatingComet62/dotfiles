@@ -6,6 +6,9 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     nvidiaSettings = true;
     open = false;
+    prime = {
+
+    };
   };
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [

@@ -6,7 +6,9 @@
   xdg.mime = let
     value = "zen-browser.desktop";
 
-    associations = builtins.listToAttrs (map (name: {
+    associations = {
+      "application/pdf" = "org.kde.okular.desktop";
+    } // builtins.listToAttrs (map (name: {
         inherit name value;
       }) [
         "application/x-extension-shtml"
@@ -22,7 +24,6 @@
         "x-scheme-handler/http"
         "application/xhtml+xml"
         "application/json"
-        "application/pdf"
         "text/plain"
         "text/html"
       ]);
