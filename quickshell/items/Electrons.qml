@@ -22,6 +22,6 @@ RowLayout {
   }
   MouseArea {
     anchors.fill: parent
-    onClicked: shellRoot.batteryModeConfig = !shellRoot.batteryModeConfig
+    onClicked: shellRoot.batteryInfo = !shellRoot.batteryModeConfig
   }
 }

@@ -5,6 +5,7 @@
       ../hardware-configuration.nix
       ./cachix.nix
       ./boot.nix
+      ./power-management.nix
       ./services.nix
       ./home.nix
       ./desktop-environment.nix

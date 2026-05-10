@@ -26,7 +26,7 @@ ShellRoot {
 
   property bool appLauncherVisible: false
   property bool calendarVisible: false
-  property bool batteryModeConfig: false
+  property bool batteryInfo: false
   property bool blink: false
 
   GlobalShortcut {
@@ -178,7 +178,7 @@ ShellRoot {
     model: Quickshell.screens
     
     PanelWindow {
-      visible: shellRoot.batteryModeConfig
+      visible: shellRoot.batteryInfo
       
       anchors {
         bottom: true
@@ -190,8 +190,8 @@ ShellRoot {
         left: Screen.width / 2 - 100
       }
       
-      implicitWidth: 200
-      implicitHeight: 50
+      implicitWidth: 300
+      implicitHeight: 120
       
       color: "transparent"
       exclusiveZone: 0
@@ -203,9 +203,9 @@ ShellRoot {
         NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
       }
 
-      BatteryModeConfig {
+      BatteryInfo {
         onRequestClose: {
-          shellRoot.batteryModeConfig = false
+          shellRoot.batteryInfo = false
         }
       }
     }
