@@ -29,6 +29,7 @@
     delta
     tokei
     wiki-tui
+    bluetui
 
     fastfetch
     pipes

@@ -14,6 +14,7 @@ Scope {
       volumeProc.running = true
       batteryProc.running = true
       networkProc.running = true
+      bluetoothProc.running = true
       temperatureProc.running = true
     }
   }
@@ -112,6 +113,23 @@ Scope {
       onRead: data => {
         var parts = data.trim().split(/\s+/)
         wifiName = parts[0];
+      }
+    }
+    Component.onCompleted: running = true
+  }
+
+  Process {
+    id: bluetoothProc
+    command: ["sh", "-c", "~/.config/quickshell/scripts/bluetooth.sh"]
+    stdout: SplitParser {
+      onRead: data => {
+        data = data.trim()
+        if (data == "Offline") {
+          bluetoothName = "Offline"
+          return
+        }
+        var parts = data.split(" ")
+        bluetoothName = parts.slice(2).join(" ")
       }
     }
     Component.onCompleted: running = true

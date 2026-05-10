@@ -61,11 +61,17 @@ ShellRoot {
       property int battery: 12
       property bool batteryCharging: false
       property string wifiName: "Offline"
+      property string bluetoothName: "Offline"
 
       Procs {}
       Process {
         id: networkManagerProc
         command: ["foot", "-e", "nmtui"]
+        Component.onCompleted: running = false
+      }
+      Process {
+        id: bluetoothManagerProc
+        command: ["foot", "-e", "bluetui"]
         Component.onCompleted: running = false
       }
 
@@ -84,6 +90,7 @@ ShellRoot {
         Workspace {}
         Item { Layout.fillWidth: true }
         Radio {}
+        LowEnergy {}
         Electrons {}
         Waves {}
         Photons {}
