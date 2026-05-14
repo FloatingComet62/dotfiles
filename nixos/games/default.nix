@@ -1,4 +1,4 @@
-{ config, pkgs, games, ... }:
+{ config, unstable, pkgs, games, ... }:
 {
   imports =
     (if games.minecraft then [ ./minecraft.nix ] else []);
@@ -8,6 +8,7 @@
     proton-ge-bin
   ];
   environment.systemPackages = with pkgs; [
+    lutris
     steam-run
     mangohud
     freetype

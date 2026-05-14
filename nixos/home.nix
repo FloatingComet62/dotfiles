@@ -1,4 +1,4 @@
-{ config, pkgs, username, terminalworkspace, ... }:
+{ config, pkgs, username, terminalworkspace, opt, ... }:
 {
   users.users.${username} = {
     isNormalUser = true;
@@ -83,7 +83,17 @@ end
       scrcpy="scrcpy --render-driver=opengl";
       wisdom="fortune ~/.config/fortune/showerthoughts | cowsay | lolcat";
       search="rg --color=always --line-number --no-heading \"\" | fzf --ansi --phony --query \"\" --bind \"change:reload(rg --color=always --line-number --no-heading {q} || true)\"";
-    };
+    } // (if opt.vm then {
+      vm = ''
+        if test "$(virsh --connect qemu:///system domstate ubuntu25.10)" != "running"
+          virsh --connect qemu:///system start ubuntu25.10
+          sleep 5
+        end
+
+        ssh vm@192.168.122.232
+      '';
+      vmstop = "virsh --connect qemu:///system shutdown ubuntu25.10";
+    } else {});
   };
   environment.systemPackages = with pkgs; [
     nushell

@@ -30,6 +30,7 @@
     tokei
     wiki-tui
     bluetui
+    tdf
 
     fastfetch
     pipes
@@ -70,4 +71,7 @@
     dejavu_fonts
     nerd-fonts.jetbrains-mono
   ];
+  xdg.mime.defaultApplications = {
+    "application/pdf" = "org.kde.okular.desktop";
+  };
 }

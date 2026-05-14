@@ -7,7 +7,6 @@
     value = "zen-browser.desktop";
 
     associations = {
-      "application/pdf" = "org.kde.okular.desktop";
     } // builtins.listToAttrs (map (name: {
         inherit name value;
       }) [
