@@ -37,6 +37,6 @@
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 53317 8081 4173 3001 ];
-  networking.firewall.allowedUDPPorts = [ 53317 8081 4173 3001 ];
+  networking.firewall.allowedTCPPorts = [ 53317 41567 ];
+  networking.firewall.allowedUDPPorts = [ 53317 41567 ];
 }
