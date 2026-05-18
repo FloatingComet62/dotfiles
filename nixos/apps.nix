@@ -6,6 +6,7 @@
     ];
   environment.systemPackages = with pkgs; [
     google-chrome
+    blanket
     gimp
     vscode
     discord
