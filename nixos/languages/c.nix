@@ -7,6 +7,7 @@
     cmake
     clang-tools
     pkg-config
+    gf
     llvmPackages_21.clang-unwrapped
     llvmPackages_21.bintools-unwrapped
     llvmPackages_21.llvm.out
