@@ -8,6 +8,7 @@
     clang-tools
     pkg-config
     gf
+    gcc-arm-embedded
     llvmPackages_21.clang-unwrapped
     llvmPackages_21.bintools-unwrapped
     llvmPackages_21.llvm.out

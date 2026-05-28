@@ -4,6 +4,7 @@
     (if games.minecraft then [ ./minecraft.nix ] else []);
   programs.steam.enable = true;
   programs.steam.protontricks.enable = true;
+  programs.gamemode.enable = true;
   programs.steam.extraCompatPackages = with pkgs; [
     proton-ge-bin
   ];

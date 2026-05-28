@@ -1,77 +1,15 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "rust_analyzer", "zls" }
+-- NOTE: DO NOT USE MASON TO INSTALL LSPs, THEY CONFLICT WITH THESE, IF YOU
+-- HAVE ANY INSTALLED, REMOVE THEM
+local servers = { "html", "cssls", "rust_analyzer", "zls", "ts_ls", "pylsp" }
 vim.lsp.enable(servers)
 
-local lspconfig = vim.lsp.config--require("lspconfig")
+vim.lsp.config("clangd", {
+  cmd = {
+    "clangd",
+    "--query-driver=/run/current-system/sw/bin/arm-none-eabi-gcc",
+  },
+})
 
--- Zig
--- lspconfig.zls.setup{
---   cmd = { "zls" },
---   filetypes = { "zig", "zir" },
-  -- root_dir = lspconfig.util.root_pattern("build.zig", "zls.json", ".git")
--- }
-
--- TS/JS
--- lspconfig.ts_ls.setup {
---   cmd = { "typescript-language-server", "--stdio" },
---   filetypes = {
---     "javascript", "javascriptreact",
---     "typescript", "typescriptreact",
---     "javascript.jsx", "typescript.tsx"
---   },
---   -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git")
--- }
---
--- -- Python
--- lspconfig.pylsp.setup {
---   cmd = { "pylsp" },
---   filetypes = { "python" },
---   settings = {
---     pylsp = {
---       plugins = {
---         black = { enabled = true },
---         ruff = { enabled = true },
---         flake8 = { enabled = true },
---         isort = { enabled = true }
---       }
---     }
---   }
--- }
---
--- -- Elixir
--- lspconfig.elixirls.setup {
---   cmd = { "elixir-ls" },
---   filetypes = { "elixir" },
--- }
---
--- -- Erlang
--- lspconfig.erlangls.setup {
---   cmd = { "erlang-ls" },
---   filetypes = { "erlang" },
--- }
---
--- -- C/C++
--- lspconfig.clangd.setup {
---   cmd = { "clangd" },
---   filetypes = { "c", "cpp" }
--- }
---
--- -- Gopls
--- lspconfig.gopls.setup {
---   cmd = { "gopls" },
---   filetype = { "go" }
--- }
---
--- -- Dart / Flutter
--- lspconfig.dartls.setup({
---   cmd = { "dart", "language-server", "--protocol=lsp" },
---   filetypes = { "dart" },
---   -- root_dir = lspconfig.util.root_pattern("pubspec.yaml"),
---   settings = {
---     dart = {
---       completeFunctionCalls = true,
---       showTodos = true,
---     },
---   },
--- })
+vim.lsp.enable("clangd")
