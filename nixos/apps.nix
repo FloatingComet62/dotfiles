@@ -11,6 +11,7 @@
     vscode
     discord
     localsend
+    libresprite
     bitwarden-desktop
     parted
     obsidian

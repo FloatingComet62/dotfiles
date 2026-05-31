@@ -19,6 +19,7 @@
   };
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
+    file
     man-pages-posix
     uutils-coreutils-noprefix
     fd

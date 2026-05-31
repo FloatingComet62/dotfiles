@@ -2,7 +2,10 @@ require("nvchad.configs.lspconfig").defaults()
 
 -- NOTE: DO NOT USE MASON TO INSTALL LSPs, THEY CONFLICT WITH THESE, IF YOU
 -- HAVE ANY INSTALLED, REMOVE THEM
-local servers = { "html", "cssls", "rust_analyzer", "zls", "ts_ls", "pylsp" }
+local servers = {
+  "html", "cssls", "rust_analyzer", "zls",
+  "ts_ls", "pylsp"
+}
 vim.lsp.enable(servers)
 
 vim.lsp.config("clangd", {
@@ -12,4 +15,10 @@ vim.lsp.config("clangd", {
   },
 })
 
+vim.lsp.config("gdscript", {
+  cmd = { "ncat", "localhost", "6005" },
+  filetypes = { "gd", "gdscript", "gdscript3" },
+})
+
 vim.lsp.enable("clangd")
+vim.lsp.enable("gdscript")
