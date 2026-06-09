@@ -15,6 +15,8 @@ vim.lsp.config("clangd", {
   },
 })
 
+
+
 vim.lsp.config("gdscript", {
   cmd = { "ncat", "localhost", "6005" },
   filetypes = { "gd", "gdscript", "gdscript3" },

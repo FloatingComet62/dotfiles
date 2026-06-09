@@ -11,8 +11,15 @@
       "$HOME/.android-sdk/platform-tools"
       "$HOME/.android-sdk/emulator"
     ];
-    PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig $HOME/.local/lib64/pkgconfig";
-    LD_LIBRARY_PATH="$HOME/.local/lib $HOME/.local/lib64";
+    PKG_CONFIG_PATH = [
+      "$HOME/.local/lib/pkgconfig"
+      "$HOME/.local/lib64/pkgconfig"
+    ];
+    LD_LIBRARY_PATH = [
+      "$HOME/.local/lib"
+      "$HOME/.local/lib64"
+      pkgs.stdenv.cc.cc.lib
+    ];
     ANDROID_NDK_HOME="$HOME/.android-ndk";
     ANDROID_NDK_ROOT="$HOME/.android-ndk";
     ANDROID_HOME="$HOME/.android-sdk";

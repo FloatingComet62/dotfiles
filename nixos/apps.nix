@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 {
   imports =
     [
@@ -8,16 +8,15 @@
     google-chrome
     blanket
     gimp
-    vscode
-    discord
+    # discord # electron has fucked discord, electron is currently unsecure package
     localsend
     libresprite
-    bitwarden-desktop
+    # bitwarden-desktop # same electron issue
     parted
     obsidian
     libreoffice-qt6-fresh
     kdePackages.dolphin
-    wineWowPackages.stable
+    wineWow64Packages.stable
     vlc
   ];
 

@@ -8,7 +8,6 @@
     shell = pkgs.fish;
   };
   virtualisation.docker.enable = true;
-  programs.adb.enable = true;
   programs.fish = {
     enable = true;
     shellInit = ''
