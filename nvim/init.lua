@@ -46,13 +46,19 @@ vim.diagnostic.config {
   },
 }
 
-vim.keymap.set("n", "<leader>mh", "<cmd>:wincmd h<CR>", { desc = "Move between windows (h)" })
-vim.keymap.set("n", "<leader>mj", "<cmd>:wincmd j<CR>", { desc = "Move between windows (j)" })
-vim.keymap.set("n", "<leader>mk", "<cmd>:wincmd k<CR>", { desc = "Move between windows (k)" })
-vim.keymap.set("n", "<leader>ml", "<cmd>:wincmd l<CR>", { desc = "Move between windows (l)" })
+vim.keymap.set("n", "<leader>h", "<cmd>:wincmd h<CR>", { desc = "Move between windows (h)" })
+vim.keymap.set("n", "<leader>j", "<cmd>:wincmd j<CR>", { desc = "Move between windows (j)" })
+vim.keymap.set("n", "<leader>k", "<cmd>:wincmd k<CR>", { desc = "Move between windows (k)" })
+vim.keymap.set("n", "<leader>l", "<cmd>:wincmd l<CR>", { desc = "Move between windows (l)" })
 
 vim.keymap.set("n", "<leader>sv", "<cmd>:vsplit<CR>", { desc = "Split vertically" })
 vim.keymap.set("n", "<leader>sh", "<cmd>:split<CR>", { desc = "Split horizontally" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>:tabp<CR>", { desc = "Go to previous tab" })
+vim.keymap.set("n", "<Tab>", "<cmd>:tabn<CR>", { desc = "Go to next tab" })
+vim.keymap.set("n", "<leader>t", function()
+  vim.cmd("tab split")
+  require("telescope.builtin").find_files()
+end, { desc = "Open file in new tab" })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
