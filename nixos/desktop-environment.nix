@@ -11,11 +11,12 @@
   programs.sway.enable = true;
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
+    libGL
+
     quickshell.packages.${pkgs.system}.quickshell
     qt6.qtwayland
     catppuccin-cursors.mochaMauve
     swaybg
-    wl-clipboard
     mako
     lm_sensors
     grim
@@ -25,5 +26,16 @@
     hyprpicker
     playerctl
     libnotify
+
+    wl-clipboard
+
+    xclip
+    libx11
+    libxrandr
+    libxinerama
+    libxcursor
+    libxi
+    libxext
+    libxfixes
   ];
 }

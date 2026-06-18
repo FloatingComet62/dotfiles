@@ -71,6 +71,7 @@
     lolcat
     just
     process-compose
+    ffmpeg
     jq
 
     termshark

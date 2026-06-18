@@ -60,6 +60,12 @@
         enable = true;
         minecraft = true;
       };
+
+      # TODO
+      sessions = {
+        plasma_x11 = true;
+        hyprland_wayland = true;
+      };
       dualbootedwithwindows = false;
 
       # This is where I have keep the dotfiles folder, replace it accordingly
@@ -76,7 +82,7 @@
           inherit quickshell inputs system
             username hostname unstable symlinkRoot
             opt languages terminalworkspace
-            dualbootedwithwindows games;
+            dualbootedwithwindows games sessions;
         };
 
         modules = [
