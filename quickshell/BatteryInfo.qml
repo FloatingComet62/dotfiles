@@ -19,7 +19,7 @@ Rectangle {
   property var capacity: ""
 
   Timer {
-    interval: 0
+    interval: 5000
     running: true
     repeat: false
     onTriggered: {

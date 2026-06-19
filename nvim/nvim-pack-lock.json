@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "compile-mode.nvim": {
+      "rev": "dd3e952076a33faba0a55b04b2b73945832c0527",
+      "src": "https://github.com/ej-shafran/compile-mode.nvim"
+    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -23,6 +27,14 @@
     "guess-indent.nvim": {
       "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
       "src": "https://github.com/NMAC427/guess-indent.nvim"
+    },
+    "hologram.nvim": {
+      "rev": "f5194f71ec1578d91b2e3119ff08e574e2eab542",
+      "src": "https://github.com/edluffy/hologram.nvim"
+    },
+    "image.nvim": {
+      "rev": "88351f1f7d9dbae286e671ce3690a49660dd8a5c",
+      "src": "https://github.com/3rd/image.nvim"
     },
     "mini.nvim": {
       "rev": "bf8169f3e518be8de3f88073ace37d91f576cb04",

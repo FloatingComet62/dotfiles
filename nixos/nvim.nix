@@ -9,6 +9,8 @@
     xsel
     ripgrep
     tree-sitter
+    
+    luajitPackages.magick
 
     vscode-langservers-extracted
   ];

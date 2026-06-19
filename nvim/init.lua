@@ -24,6 +24,9 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 5
 vim.o.confirm = true
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.diagnostic.config {
@@ -144,6 +147,69 @@ vim.cmd.colorscheme 'gruvbox'
 
 vim.pack.add { gh 'folke/todo-comments.nvim' }
 require('todo-comments').setup { signs = false }
+
+vim.pack.add { gh '3rd/image.nvim' }
+require("image").setup({
+  backend = "sixel", -- or "" or ""
+  processor = "magick_cli", -- or "magick_rock"
+  integrations = {
+    markdown = {
+      enabled = true,
+      clear_in_insert_mode = false,
+      download_remote_images = true,
+      only_render_image_at_cursor = true,
+      only_render_image_at_cursor_mode = "popup", -- or "inline"
+      floating_windows = false, -- if true, images will be rendered in floating markdown windows
+      filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+    },
+    asciidoc = {
+      enabled = true,
+      clear_in_insert_mode = false,
+      download_remote_images = true,
+      only_render_image_at_cursor = true,
+      only_render_image_at_cursor_mode = "popup",
+      floating_windows = false,
+      filetypes = { "asciidoc", "adoc" },
+    },
+    neorg = {
+      enabled = true,
+      filetypes = { "norg" },
+    },
+    rst = {
+      enabled = true,
+    },
+    typst = {
+      enabled = true,
+      filetypes = { "typst" },
+    },
+    html = {
+      enabled = false,
+    },
+    css = {
+      enabled = false,
+    },
+  },
+  max_width = nil,
+  max_height = nil,
+  max_width_window_percentage = nil,
+  max_height_window_percentage = 50,
+  scale_factor = 1.0,
+  window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+  window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
+  editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
+  tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+  hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
+})
+
+vim.pack.add { gh 'ej-shafran/compile-mode.nvim' }
+vim.g.compile_mode = {}
+vim.keymap.set('n', '<leader>cp', "<cmd>:Compile<CR>", { desc = '[C]om[p]ile' })
+vim.keymap.set('n', '<leader>n', "<cmd>:NextError<CR>", { desc = '[N]ext Error' })
+
+vim.keymap.set('t', '<Esc>', "<C-\\><C-n>", { desc = 'Escape terminal mode' })
+
+vim.keymap.set('n', '<leader>z', "<C-w>_", { desc = '[Z]en Mode' })
+vim.keymap.set('n', '<leader><S-z>', "<C-w>=", { desc = 'Escape [Z]en Mode' })
 
 vim.pack.add { gh 'nvim-mini/mini.nvim' }
 
