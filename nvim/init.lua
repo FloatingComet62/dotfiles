@@ -62,6 +62,7 @@ vim.keymap.set("n", "<leader>t", function()
   vim.cmd("tab split")
   require("telescope.builtin").find_files()
 end, { desc = "Open file in new tab" })
+vim.keymap.set("n", "<leader>ot", "<cmd>:tab split<CR>:terminal<CR>", { desc = "[O]pen [T]erminal" })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
